@@ -90,7 +90,7 @@
 <meta property="og:image" content="http://yoursite.com/images/first.png">
 <meta property="og:image" content="http://yoursite.com/images/second.png">
 <meta property="og:image" content="http://yoursite.com/images/third.png">
-<meta property="og:updated_time" content="2017-10-30T09:54:40.016Z">
+<meta property="og:updated_time" content="2017-10-30T10:44:40.726Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="蓝桥杯算法题: 剪邮票">
 <meta name="twitter:description" content="如【图1.jpg】, 有12张连在一起的12生肖的邮票。现在你要从中剪下5张来，要求必须是连着的。（仅仅连接一个角不算相连）比如，【图2.jpg】，【图3.jpg】中，粉红色所示部分就是合格的剪取。 请你计算，一共有多少种不同的剪取方法。 请填写表示方案数目的整数。注意：你提交的应该是一个整数，不要填写任何多余的内容或说明性文字。     由于这道题不需要提交代码，所以我们就不写代码，通过手动计">
@@ -339,7 +339,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,675 字
+                  1,668 字
                 </span>
               
 
@@ -433,7 +433,7 @@
 <p>第四种情况：</p>
 <blockquote>
 <p>我们以第一层选1个的情况分析，对这种情况就要小心点数了，一不小心可能就数多或者数少了，<strong>有一点要注意的是，在第二和第三层的选取时，必须要是连续，不连续的话怎么取都没意义了</strong>，这也为我们节省了很多不必要的分析。为了避免数错，我们每种可行的方案都列出来， 如下：</p>
-<ol>
+<ul>
 <li><strong>1 5 6 9 10</strong></li>
 <li><strong>1 5 6 10 11</strong> </li>
 <li><strong>2 5 6 9 10</strong></li>
@@ -441,7 +441,7 @@
 <li><strong>2 6 7 9 10</strong></li>
 <li><strong>2 6 7 10 11</strong></li>
 <li><strong>2 6 7 11 12</strong></li>
-</ol>
+</ul>
 <p>这7种分别是第一层选1和2的方案数，3和4是一样的，所以直接乘以2就可以，故方案数为<strong>7 * 2 = 14种</strong></p>
 </blockquote>
 <p>接下来我们来分析剩下的以下两种情况：</p>
