@@ -84,7 +84,7 @@
 <meta property="og:site_name" content="Sixpence">
 <meta property="og:description" content="四平方和定理，又称为拉格朗日定理：每个正整数都可以表示为至多4个正整数的平方和。如果把0包括进去，就正好可以表示为4个数的平方和。比如：5 = 0^2 + 0^2 + 1^2 + 2^27 = 1^2 + 1^2 + 1^2 + 2^2（^符号表0方的意思）对于一个给定的正整数，可能存在多种平方和的表示法。要求你对4个数排序：0 &amp;lt;= a &amp;lt;= b &amp;lt;= c &amp;lt;= d并对">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-02T12:50:37.452Z">
+<meta property="og:updated_time" content="2017-11-02T12:58:03.883Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="蓝桥杯算法题：四平方和">
 <meta name="twitter:description" content="四平方和定理，又称为拉格朗日定理：每个正整数都可以表示为至多4个正整数的平方和。如果把0包括进去，就正好可以表示为4个数的平方和。比如：5 = 0^2 + 0^2 + 1^2 + 2^27 = 1^2 + 1^2 + 1^2 + 2^2（^符号表0方的意思）对于一个给定的正整数，可能存在多种平方和的表示法。要求你对4个数排序：0 &amp;lt;= a &amp;lt;= b &amp;lt;= c &amp;lt;= d并对">
@@ -332,7 +332,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,198 字
+                  1,208 字
                 </span>
               
 
@@ -375,15 +375,39 @@
 </blockquote>
 <p>根据题目，我们可以得到3个信息：</p>
 <ol>
-<li>对于式子a^2 + b^2 + c^2 + d^2，我们只需要关注系数即可</li>
-<li>系数从小到大排列为 a b c d，后面的每个系数都必须<strong>等于</strong>或<strong>大于</strong>前一个系数。如a=2，那么b只能是2、3、4······</li>
-<li>一个整数可能有多种系数序列，但只取众多系数序列升序中的第一个。如整数12，其中两个系数序列是0 2 2 2、1 1 1 3，那么我们只能取0 2 2 2而不能1 1 1 3</li>
+<li><p>对于式子a^2 + b^2 + c^2 + d^2，我们只需要关注系数即可</p>
+</li>
+<li><p>系数从小到大排列为 a b c d，后面的每个系数都必须<strong>等于</strong>或<strong>大于</strong>前一个系数。如a=2，那么b只能是2、3、4······</p>
+</li>
+<li><p>一个整数可能有多种系数序列，但只取众多系数序列升序中的第一个。如整数12，其中两个系数序列是0 2 2 2、1 1 1 3，那么我们只能取0 2 2 2而不能1 1 1 3</p>
+<p>​</p>
+</li>
 </ol>
 <p>好了，有了这3点信息，我们开始进一步分析，整理思路，编写代码。</p>
 <p>假设式子为：a^2 + b^2 + c^2 + d^2</p>
 <p>因为我们只需要关注a、b、c、d四个系数，并且系数序列需要的是升序中的首个，那么我们可以用递归的方法，每一个递归层为一个项，那么整个递归就是4层，每层向系数中填入数值，当计算结果大于我们想要的结果时，返回到上一个系数，上一个系数加1后继续往下递归。如此循环直到最后找出可以算出结果的系数。</p>
 <p>举个例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">我们以12作为计结果，那么式子就变成a^2 + b^2 + c^2 + d^2 = 12</div><div class="line"></div><div class="line">从0开始：</div><div class="line"></div><div class="line">a     b     c     d     result</div><div class="line"></div><div class="line">0^2 + 0^2 + 0^2 + 0^2 = 0 &lt; 12</div><div class="line"></div><div class="line">0^2 + 0^2 + 0^2 + 1^2 = 1 &lt; 12</div><div class="line"></div><div class="line">0^2 + 0^2 + 0^2 + 2^2 = 4 &lt;12</div><div class="line"></div><div class="line">          ·····</div><div class="line"></div><div class="line">0^2 + 0^2 + 0^2 + 4^2 = 16 &gt;12</div><div class="line"></div><div class="line">当d=4时，计算结果大于12，返回到c，c加1后继续递归，此时d就不能从0开始了，必须从1开始</div><div class="line"></div><div class="line">0^2 + 0^2 + 1^2 + 1^2 = 2 &lt; 12</div><div class="line"></div><div class="line">0^2 + 0^2 + 1^2 + 2^2 = 5 &lt; 12</div><div class="line"></div><div class="line">0^2 + 0^2 + 1^2 + 3^2 = 10 &lt; 12</div><div class="line"></div><div class="line">0^2 + 0^2 + 1^2 + 4^2 = 17 &gt; 12</div><div class="line"></div><div class="line">同是当d=4时结果大于12，重复上面过程</div><div class="line"></div><div class="line">0^2 + 0^2 + 2^2 + 2^2 = 8 &lt; 12</div><div class="line"></div><div class="line">0^2 + 0^2 + 2^2 + 3^2 = 14 &gt; 12</div><div class="line"></div><div class="line">此时，返回c加1后发现：0^2 + 0^2 + 3^2 + 3^2 = 18 &gt; 12， 第一次计算就大于12了，那接下来无论是c还是d都没必要继续增加了，计算结果一定比12大，那么现在就要返回到b，再重复上面的操作</div><div class="line"></div><div class="line">从0^2 + 1^2 + 1^2 + 1^2 = 3 开始</div><div class="line"></div><div class="line">一直到0^2 + 2^2 + 2^2 + 2^2 时，计算结果刚好是12，那么就可以输出这个系数序列0 2 2 2</div></pre></td></tr></table></figure>
+<blockquote>
+<p>我们以12作为计结果，那么式子就变成a^2 + b^2 + c^2 + d^2 = 12</p>
+<p>从0开始：</p>
+<p>a        b         c        d         result</p>
+<p>0^2 + 0^2 + 0^2 + 0^2 = 0 &lt; 12</p>
+<p>0^2 + 0^2 + 0^2 + 1^2 = 1 &lt; 12</p>
+<p>0^2 + 0^2 + 0^2 + 2^2 = 4 &lt;12</p>
+<p>​             …….</p>
+<p>0^2 + 0^2 + 0^2 + 4^2 = 16 &gt;12</p>
+<p>当d=4时，计算结果大于12，返回到c，c加1后继续递归，此时d就不能从0开始了，必须从1开始</p>
+<p>0^2 + 0^2 + 1^2 + 1^2 = 2 &lt; 12</p>
+<p>0^2 + 0^2 + 1^2 + 2^2 = 5 &lt; 12</p>
+<p>0^2 + 0^2 + 1^2 + 3^2 = 10 &lt; 12</p>
+<p>0^2 + 0^2 + 1^2 + 4^2 = 17 &gt; 12</p>
+<p>同是当d=4时结果大于12，重复上面过程</p>
+<p>0^2 + 0^2 + 2^2 + 2^2 = 8 &lt; 12</p>
+<p>0^2 + 0^2 + 2^2 + 3^2 = 14 &gt; 12</p>
+<p>此时，返回c加1后发现：0^2 + 0^2 + 3^2 + 3^2 = 18 &gt; 12， 第一次计算就大于12了，那接下来无论是c还是d都没必要继续增加了，计算结果一定比12大，那么现在就要返回到b，再重复上面的操作</p>
+<p>从0^2 + 1^2 + 1^2 + 1^2 = 3 开始</p>
+<p>一直到0^2 + 2^2 + 2^2 + 2^2 时，计算结果刚好是12，那么就可以输出这个系数序列0 2 2 2 </p>
+</blockquote>
 <p>Java代码实现：    </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">import java.util.Scanner;</div><div class="line"></div><div class="line">public class Lagrange &#123;</div><div class="line">	//四个系数</div><div class="line">    static int a, b, c, d = 0;</div><div class="line">    //给出的整数</div><div class="line">    static int result = 0;</div><div class="line"></div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">    	Scanner in = new Scanner(System.in);</div><div class="line">        result = in.nextInt();</div><div class="line">        dfs(1, 0);</div><div class="line">    &#125;</div><div class="line">	</div><div class="line">	/*</div><div class="line">	depth: 递归层级</div><div class="line">	start: 开始填入的数值</div><div class="line">	return: 如果在第一次计算就大于结果时，返回当前系数，反之返回-1</div><div class="line">	</div><div class="line">	当depth递归导数在为1，2，3时，暂时设置a,b,c的值，然后向下递归，当递归到第4层时，</div><div class="line">	开始计算结果，计算结果等于目的结果则返回系数序列，小于则继续递增计算，</div><div class="line">	大于则返回上一层。</div><div class="line">	*/</div><div class="line">    public static int dfs(int depth, int start)&#123;</div><div class="line">    	//用于判断是否第一次计算就失败</div><div class="line">        boolean first = true;</div><div class="line">        if(depth == 4)&#123;</div><div class="line">            for(int i = start; ; i++)&#123;</div><div class="line">                if(a*a + b*b + c*c + i*i == result)&#123;</div><div class="line">                    first = false;</div><div class="line">                    d = i;</div><div class="line">                    System.out.println(a+ &quot; &quot; + b + &quot; &quot; + c + &quot; &quot; + d);</div><div class="line">                    System.exit(0);</div><div class="line">                &#125;else if(a*a + b*b + c*c + i*i &gt; result)&#123;</div><div class="line">                    if(first) return i;</div><div class="line">                    return -1;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        for(int i = start; ; i++)&#123;</div><div class="line">            switch (depth)&#123;</div><div class="line">                case 1: a=i; break;</div><div class="line">                case 2: b=i; break;</div><div class="line">                case 3: c=i; break;</div><div class="line">                default:break;</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">            //第一次计算失败会返回d的系数，如果d的系数与当前层的系数相等的话，</div><div class="line">            //说明当前层接下来的数值也不行，直接返回上一层</div><div class="line">            int temp = dfs(depth+1, i);</div><div class="line">            if( temp == i )&#123;</div><div class="line">                return i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
