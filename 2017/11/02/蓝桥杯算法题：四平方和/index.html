@@ -77,25 +77,18 @@
 
 
 
-<meta name="description" content="如【图1.jpg】, 有12张连在一起的12生肖的邮票。现在你要从中剪下5张来，要求必须是连着的。（仅仅连接一个角不算相连）比如，【图2.jpg】，【图3.jpg】中，粉红色所示部分就是合格的剪取。 请你计算，一共有多少种不同的剪取方法。 请填写表示方案数目的整数。注意：你提交的应该是一个整数，不要填写任何多余的内容或说明性文字。     由于这道题不需要提交代码，所以我们就不写代码，通过手动计">
+<meta name="description" content="四平方和定理，又称为拉格朗日定理：每个正整数都可以表示为至多4个正整数的平方和。如果把0包括进去，就正好可以表示为4个数的平方和。比如：5 = 0^2 + 0^2 + 1^2 + 2^27 = 1^2 + 1^2 + 1^2 + 2^2（^符号表0方的意思）对于一个给定的正整数，可能存在多种平方和的表示法。要求你对4个数排序：0 &amp;lt;= a &amp;lt;= b &amp;lt;= c &amp;lt;= d并对">
 <meta name="keywords" content="算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="蓝桥杯算法题: 剪邮票">
-<meta property="og:url" content="http://yoursite.com/2017/10/28/蓝桥杯算法题-剪邮票/index.html">
+<meta property="og:title" content="蓝桥杯算法题：四平方和">
+<meta property="og:url" content="http://yoursite.com/2017/11/02/蓝桥杯算法题：四平方和/index.html">
 <meta property="og:site_name" content="Sixpence">
-<meta property="og:description" content="如【图1.jpg】, 有12张连在一起的12生肖的邮票。现在你要从中剪下5张来，要求必须是连着的。（仅仅连接一个角不算相连）比如，【图2.jpg】，【图3.jpg】中，粉红色所示部分就是合格的剪取。 请你计算，一共有多少种不同的剪取方法。 请填写表示方案数目的整数。注意：你提交的应该是一个整数，不要填写任何多余的内容或说明性文字。     由于这道题不需要提交代码，所以我们就不写代码，通过手动计">
+<meta property="og:description" content="四平方和定理，又称为拉格朗日定理：每个正整数都可以表示为至多4个正整数的平方和。如果把0包括进去，就正好可以表示为4个数的平方和。比如：5 = 0^2 + 0^2 + 1^2 + 2^27 = 1^2 + 1^2 + 1^2 + 2^2（^符号表0方的意思）对于一个给定的正整数，可能存在多种平方和的表示法。要求你对4个数排序：0 &amp;lt;= a &amp;lt;= b &amp;lt;= c &amp;lt;= d并对">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/图1.jpg">
-<meta property="og:image" content="http://yoursite.com/images/图2.jpg">
-<meta property="og:image" content="http://yoursite.com/images/图3.jpg">
-<meta property="og:image" content="http://yoursite.com/images/first.png">
-<meta property="og:image" content="http://yoursite.com/images/second.png">
-<meta property="og:image" content="http://yoursite.com/images/third.png">
-<meta property="og:updated_time" content="2017-11-05T08:31:38.315Z">
+<meta property="og:updated_time" content="2017-11-05T08:31:32.068Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="蓝桥杯算法题: 剪邮票">
-<meta name="twitter:description" content="如【图1.jpg】, 有12张连在一起的12生肖的邮票。现在你要从中剪下5张来，要求必须是连着的。（仅仅连接一个角不算相连）比如，【图2.jpg】，【图3.jpg】中，粉红色所示部分就是合格的剪取。 请你计算，一共有多少种不同的剪取方法。 请填写表示方案数目的整数。注意：你提交的应该是一个整数，不要填写任何多余的内容或说明性文字。     由于这道题不需要提交代码，所以我们就不写代码，通过手动计">
-<meta name="twitter:image" content="http://yoursite.com/images/图1.jpg">
+<meta name="twitter:title" content="蓝桥杯算法题：四平方和">
+<meta name="twitter:description" content="四平方和定理，又称为拉格朗日定理：每个正整数都可以表示为至多4个正整数的平方和。如果把0包括进去，就正好可以表示为4个数的平方和。比如：5 = 0^2 + 0^2 + 1^2 + 2^27 = 1^2 + 1^2 + 1^2 + 2^2（^符号表0方的意思）对于一个给定的正整数，可能存在多种平方和的表示法。要求你对4个数排序：0 &amp;lt;= a &amp;lt;= b &amp;lt;= c &amp;lt;= d并对">
 
 
 
@@ -125,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/28/蓝桥杯算法题-剪邮票/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/02/蓝桥杯算法题：四平方和/"/>
 
 
 
 
 
-  <title>蓝桥杯算法题: 剪邮票 | Sixpence</title>
+  <title>蓝桥杯算法题：四平方和 | Sixpence</title>
   
 
 
@@ -250,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/28/蓝桥杯算法题-剪邮票/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/02/蓝桥杯算法题：四平方和/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sixpence">
@@ -267,7 +260,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">蓝桥杯算法题: 剪邮票</h2>
+          <h2 class="post-title" itemprop="name headline">蓝桥杯算法题：四平方和</h2>
         
 
         <div class="post-meta">
@@ -279,8 +272,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-28T20:01:43+08:00">
-                2017-10-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-02T19:04:52+08:00">
+                2017-11-02
               </time>
             
 
@@ -340,7 +333,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,668 字
+                  1,203 字
                 </span>
               
 
@@ -356,7 +349,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  6 分钟
+                  5 分钟
                 </span>
               
             </div>
@@ -378,105 +371,45 @@
 
       
         <blockquote>
-<p>如【图1.jpg】, 有12张连在一起的12生肖的邮票。<br>现在你要从中剪下5张来，要求必须是连着的。<br>（仅仅连接一个角不算相连）<br>比如，【图2.jpg】，【图3.jpg】中，粉红色所示部分就是合格的剪取。</p>
-<p>请你计算，一共有多少种不同的剪取方法。</p>
-<p>请填写表示方案数目的整数。<br>注意：你提交的应该是一个整数，不要填写任何多余的内容或说明性文字。</p>
+<p>四平方和定理，又称为拉格朗日定理：<br>每个正整数都可以表示为至多4个正整数的平方和。<br>如果把0包括进去，就正好可以表示为4个数的平方和。<br>比如：<br>5 = 0^2 + 0^2 + 1^2 + 2^2<br>7 = 1^2 + 1^2 + 1^2 + 2^2<br>（^符号表0方的意思）<br>对于一个给定的正整数，可能存在多种平方和的表示法。<br>要求你对4个数排序：<br>0 &lt;= a &lt;= b &lt;= c &lt;= d<br>并对所有的可能表示法按 a,b,c,d 为联合主键升序排列，最后输出第一个表示法<br>程序输入为一个正整数N (N&lt;5000000)<br>要求输出4个非负整数，按从小到大排序，中间用空格分开</p>
+<p>例如，输入：<br>5<br>则程序应该输出：<br>0 0 1 2<br>再例如，输入：<br>12<br>则程序应该输出：<br>0 2 2 2<br>再例如，输入：<br>773535<br>则程序应该输出：<br>1 1 267 838</p>
 </blockquote>
-<p><img src="/images/图1.jpg" alt="image"></p>
-<p><img src="/images/图2.jpg" alt="image"></p>
-<p><img src="/images/图3.jpg" alt="image"></p>
-<p>由于这道题不需要提交代码，所以我们就不写代码，通过手动计算共有多少方案。</p>
-<p>首先，我们把这张图分成三层，如下图所示，然后每层分情况去组合出符合要求的邮票。（建议自己画一个像下面的图，然后跟着思路走）</p>
-<p><img src="/images/first.png" alt="image"></p>
-<p><img src="/images/second.png" alt="image"></p>
-<p><img src="/images/third.png" alt="image"></p>
-<p>​                            </p>
-<p>我们可以分出以下14种情况(实际上有一些情况是相同的，所以我们手动计算的只有几种情况):</p>
-<blockquote>
+<p>根据题目，我们可以得到3个信息：</p>
 <ol>
-<li>第一层<strong>选4个</strong>，第二层<strong>选1个</strong></li>
-<li>第一层<strong>选3个</strong>，第二层<strong>选2个</strong></li>
-<li>第一层<strong>选3个</strong>，第二层<strong>选1个</strong>，第三层<strong>选1个</strong></li>
-<li>第一层<strong>选2个</strong>，第二层<strong>选3个</strong></li>
-<li>第一层<strong>选2个</strong>，第二层<strong>选2个</strong>，第三层<strong>选1个</strong></li>
-<li>第一层<strong>选2个</strong>，第二层<strong>选1个</strong>，第三层<strong>选2个</strong></li>
-<li>第一层<strong>选1个</strong>，第二层<strong>选4个</strong></li>
-<li>第一层<strong>选1个</strong>，第二层<strong>选3个</strong>，第三层<strong>选1个</strong></li>
-<li>第一层<strong>选1个</strong>，第二层<strong>选2个</strong>，第三层<strong>选2个</strong></li>
-<li>第一层<strong>选1个</strong>，第二层<strong>选1个</strong>，第三层<strong>选3个</strong></li>
-<li>第一层<strong>选0个</strong>，第二层<strong>选4个</strong>，第三层<strong>选1个</strong></li>
-<li>第一层<strong>选0个</strong>，第二层<strong>选3个</strong>，第三层<strong>选2个</strong></li>
-<li>第一层<strong>选0个</strong>，第二层<strong>选2个</strong>，第三层<strong>选3个</strong></li>
-<li>第一层<strong>选0个</strong>，第二层<strong>选1个</strong>，第三层<strong>选4个</strong></li>
-</ol>
-</blockquote>
-<p>我们好分析下以上14种情况，发现<br>一、<strong>1、7、11、14</strong>都是某一层<strong>选4个</strong>，然后相邻一层<strong>选1个</strong>的情况；<br>二、<strong>2、5、12、13</strong>则是某一层<strong>选3个</strong>，相邻一层<strong>选2个</strong>；<br>三、<strong>3、10</strong>是<strong>第一层或第三层选3个</strong>，其它两层<strong>分别选1个</strong>；<br>四、<strong>4、9</strong>是<strong>第一层或第二层选1个</strong>，其它两层<strong>分别选2个</strong></p>
-<p>现在只剩下<strong>6和8</strong>两种不相同的情况，所以总结下来我们需要计算的只有<strong>6</strong>种情况。</p>
-<p>那么我们就开始计算（实际上就是手动数～(￣▽￣～)~ ）</p>
-<p>第一种情况：</p>
-<blockquote>
-<p>第一层选4个，那么第二层任意选都能组成符合情况的邮票，所以这种情况有<strong>4种方案</strong>。 </p>
-</blockquote>
-<p>第二种情况：</p>
-<blockquote>
-<p>我们以第一层选3个的情况来分析（当其它层是3时，我们可以类似的把那一层想像成是第一层来分析），我们分步来：</p>
-<ol>
-<li>第一层在选出3个时，这3个必须是要连续的，如果不连续你会发现第二层无论怎么取都是无法符合要求的，所以只有在选<strong>123</strong>和<strong>234</strong>时，接下来第二层的选取才有意义;</li>
-<li>我们再一步分析，发现无论是选<strong>123</strong>还是<strong>234</strong>，对于第二层的选取都是类似且结果相同，所以我们只分析<strong>123</strong>然后再乘以2就是这种情况的方案数;</li>
-<li>当第一层选<strong>123</strong>时，第二层的可行的选取有<strong>5 6</strong>、<strong>5 7</strong>、<strong>6 7</strong>、<strong>7 8</strong>共4种，所以这种情况的方案数就是<strong>4 * 2 = 8种</strong></li>
-</ol>
-</blockquote>
-<p>第三种情况：</p>
-<blockquote>
-<p>我们仍以第一层选3个，同样地选<strong>123</strong>的情况来分析：</p>
-<p>这种情况下，第二层能选的只有<strong>123</strong>正下方的<strong>567</strong>中的一个，接着第三层必须跟第二层相邻才能使得整个邮票符合要求，所以，有效的只有<strong>5 9</strong>，<strong>6 7</strong>，<strong>7 11</strong>，同样的乘以2就是<strong>3 * 2 = 6种方案</strong></p>
-</blockquote>
-<p>第四种情况：</p>
-<blockquote>
-<p>我们以第一层选1个的情况分析，对这种情况就要小心点数了，一不小心可能就数多或者数少了，<strong>有一点要注意的是，在第二和第三层的选取时，必须要是连续，不连续的话怎么取都没意义了</strong>，这也为我们节省了很多不必要的分析。为了避免数错，我们每种可行的方案都列出来， 如下：</p>
-<ul>
-<li><strong>1 5 6 9 10</strong></li>
-<li><strong>1 5 6 10 11</strong> </li>
-<li><strong>2 5 6 9 10</strong></li>
-<li><strong>2 5 6 10 11</strong></li>
-<li><strong>2 6 7 9 10</strong></li>
-<li><strong>2 6 7 10 11</strong></li>
-<li><strong>2 6 7 11 12</strong></li>
-</ul>
-<p>这7种分别是第一层选1和2的方案数，3和4是一样的，所以直接乘以2就可以，故方案数为<strong>7 * 2 = 14种</strong></p>
-</blockquote>
-<p>接下来我们来分析剩下的以下两种情况：</p>
-<ol>
-<li>第一层<strong>选2个</strong>，第二层<strong>选1个</strong>，第三层<strong>选2个</strong></li>
-<li>第一层<strong>选1个</strong>，第二层<strong>选3个</strong>，第三层<strong>选1个</strong></li>
-</ol>
-<blockquote>
-<ol>
-<li><p>同样的一，三层的选取要连续，<strong>1 2</strong>和<strong>3 4</strong>是一样的，所以我们只需要分析<strong>1 2</strong>和<strong>2 3</strong>即可。</p>
-<ul>
-<li><strong>1 2</strong> ：此时第二层可选的有<strong>5</strong>和<strong>6</strong>，选<strong>5</strong>时只有<strong>1 2 5 9 10</strong>可行，选<strong>6</strong>时有<strong>1 2 6 9 10</strong>和<strong>1 2 6 10 11</strong>可行; 共<strong>3</strong>种。</li>
-<li><strong>2 3</strong> ：此时第二层可选的有<strong>6</strong>和<strong>7</strong>，选<strong>6</strong>时有<strong>2 3 6 9 10</strong>、 <strong>2 3 6 10 11</strong>、 <strong>2 3 7 10 11</strong>、 <strong>2 3 7 11 12</strong>可行; 共<strong>种</strong>。</li>
-</ul>
-<p>所以总共有<strong>2 * 3 + 4 = 10</strong>种方案。</p>
+<li><p>对于式子a^2 + b^2 + c^2 + d^2，我们只需要关注系数即可</p>
 </li>
-<li><p>某一层选3个时就很好分析啦。第二层同样的要连续，那么就只有<strong>5 6 7</strong>和<strong>6 7 8</strong>; 第一层同样<strong>1</strong>和<strong>4</strong>相同，<strong>2</strong>和<strong>3</strong>相同，所以就看<strong>1</strong>和<strong>2</strong>就够了。</p>
-<ul>
-<li><strong>1</strong> ： 第二层只能是<strong>5 6 7</strong>，而第三层就是<strong>9 10 11</strong>三选一，共<strong>3</strong>种</li>
-<li><strong>2</strong> ： 第二层可选有<strong>5 6 7</strong>和<strong>6 7 8</strong>，两种情况可行的方案数一样，选法与<strong>1</strong> 的相同，所以共<strong>6</strong>种</li>
-</ul>
-<p>所以总共有<strong>(3+6) * 2 = 18</strong>种方案</p>
+<li><p>系数从小到大排列为 a b c d，后面的每个系数都必须<strong>等于</strong>或<strong>大于</strong>前一个系数。如a=2，那么b只能是2、3、4······</p>
+</li>
+<li><p>一个整数可能有多种系数序列，但只取众多系数序列升序中的第一个。如整数12，其中两个系数序列是0 2 2 2、1 1 1 3，那么我们只能取0 2 2 2而不能1 1 1 3</p>
+<p>​</p>
 </li>
 </ol>
-</blockquote>
-<p>好了，至此所有的情况我们数计算（数）完了，现在来合计下看总共有多少种可行的方案：</p>
+<p>好了，有了这3点信息，我们开始进一步分析，整理思路，编写代码。</p>
+<p>假设式子为：a^2 + b^2 + c^2 + d^2</p>
+<p>因为我们只需要关注a、b、c、d四个系数，并且系数序列需要的是升序中的首个，那么我们可以用递归的方法，每一个递归层为一个项，那么整个递归就是4层，每层向系数中填入数值，当计算结果大于我们想要的结果时，返回到上一个系数，上一个系数加1后继续往下递归。如此循环直到最后找出可以算出结果的系数。</p>
+<p>举个例子：</p>
 <blockquote>
-<p>第一种情况有4个相同的情况，所以共有<strong>4 * 4 = 16</strong>种</p>
-<p>第二种情况也有4个相同的情况，所以共有<strong>4 * 8 = 32种</strong></p>
-<p>第三种情况有2个相同的情况，所以共有<strong>2 * 6 = 12种</strong> </p>
-<p>第四种情况也有2个相同的情况，所以共有<strong>2 * 14 = 28种 </strong></p>
-<p>剩下的2种情况则合计是<strong>28</strong>种</p>
-<p>故总可行方案有：<strong>16 + 32 + 12 + 28 + 28 = 116种</strong></p>
+<p>我们以12作为计结果，那么式子就变成a^2 + b^2 + c^2 + d^2 = 12</p>
+<p>从0开始：</p>
+<p>0^2 + 0^2 + 0^2 + 0^2 = 0 &lt; 12</p>
+<p>0^2 + 0^2 + 0^2 + 1^2 = 1 &lt; 12</p>
+<p>0^2 + 0^2 + 0^2 + 2^2 = 4 &lt;12</p>
+<p>​             …….</p>
+<p>0^2 + 0^2 + 0^2 + 4^2 = 16 &gt;12</p>
+<p>当d=4时，计算结果大于12，返回到c，c加1后继续递归，此时d就不能从0开始了，必须从1开始</p>
+<p>0^2 + 0^2 + 1^2 + 1^2 = 2 &lt; 12</p>
+<p>0^2 + 0^2 + 1^2 + 2^2 = 5 &lt; 12</p>
+<p>0^2 + 0^2 + 1^2 + 3^2 = 10 &lt; 12</p>
+<p>0^2 + 0^2 + 1^2 + 4^2 = 17 &gt; 12</p>
+<p>同是当d=4时结果大于12，重复上面过程</p>
+<p>0^2 + 0^2 + 2^2 + 2^2 = 8 &lt; 12</p>
+<p>0^2 + 0^2 + 2^2 + 3^2 = 14 &gt; 12</p>
+<p>此时，返回c加1后发现：0^2 + 0^2 + 3^2 + 3^2 = 18 &gt; 12， 第一次计算就大于12了，那接下来无论是c还是d都没必要继续增加了，计算结果一定比12大，那么现在就要返回到b，再重复上面的操作</p>
+<p>从0^2 + 1^2 + 1^2 + 1^2 = 3 开始</p>
+<p>一直到0^2 + 2^2 + 2^2 + 2^2 时，计算结果刚好是12，那么就可以输出这个系数序列0 2 2 2 </p>
 </blockquote>
+<p>Java代码实现：    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">import java.util.Scanner;</div><div class="line"></div><div class="line">public class Lagrange &#123;</div><div class="line">	//四个系数</div><div class="line">    static int a, b, c, d = 0;</div><div class="line">    //给出的整数</div><div class="line">    static int result = 0;</div><div class="line"></div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">    	Scanner in = new Scanner(System.in);</div><div class="line">        result = in.nextInt();</div><div class="line">        dfs(1, 0);</div><div class="line">    &#125;</div><div class="line">	</div><div class="line">	/*</div><div class="line">	depth: 递归层级</div><div class="line">	start: 开始填入的数值</div><div class="line">	return: 如果在第一次计算就大于结果时，返回当前系数，反之返回-1</div><div class="line">	</div><div class="line">	当depth递归导数在为1，2，3时，暂时设置a,b,c的值，然后向下递归，当递归到第4层时，</div><div class="line">	开始计算结果，计算结果等于目的结果则返回系数序列，小于则继续递增计算，</div><div class="line">	大于则返回上一层。</div><div class="line">	*/</div><div class="line">    public static int dfs(int depth, int start)&#123;</div><div class="line">    	//用于判断是否第一次计算就失败</div><div class="line">        boolean first = true;</div><div class="line">        if(depth == 4)&#123;</div><div class="line">            for(int i = start; ; i++)&#123;</div><div class="line">                if(a*a + b*b + c*c + i*i == result)&#123;</div><div class="line">                    first = false;</div><div class="line">                    d = i;</div><div class="line">                    System.out.println(a+ &quot; &quot; + b + &quot; &quot; + c + &quot; &quot; + d);</div><div class="line">                    System.exit(0);</div><div class="line">                &#125;else if(a*a + b*b + c*c + i*i &gt; result)&#123;</div><div class="line">                    if(first) return i;</div><div class="line">                    return -1;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        for(int i = start; ; i++)&#123;</div><div class="line">            switch (depth)&#123;</div><div class="line">                case 1: a=i; break;</div><div class="line">                case 2: b=i; break;</div><div class="line">                case 3: c=i; break;</div><div class="line">                default:break;</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">            //第一次计算失败会返回d的系数，如果d的系数与当前层的系数相等的话，</div><div class="line">            //说明当前层接下来的数值也不行，直接返回上一层</div><div class="line">            int temp = dfs(depth+1, i);</div><div class="line">            if( temp == i )&#123;</div><div class="line">                return i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -493,7 +426,7 @@
 	      </li>
 	      <li class="post-copyright-link">
 	        <strong>本文链接：</strong>
-	        <a href="/2017/10/28/蓝桥杯算法题-剪邮票/" title="蓝桥杯算法题: 剪邮票">2017/10/28/蓝桥杯算法题-剪邮票/</a>
+	        <a href="/2017/11/02/蓝桥杯算法题：四平方和/" title="蓝桥杯算法题：四平方和">2017/11/02/蓝桥杯算法题：四平方和/</a>
 	      </li>
 	      <li class="post-copyright-license">
 	        <strong>版权声明： </strong>
@@ -567,8 +500,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/26/Hexo+Github搭建个人博客/" rel="next" title="Hexo+Github搭建个人博客">
-                <i class="fa fa-chevron-left"></i> Hexo+Github搭建个人博客
+              <a href="/2017/10/28/蓝桥杯算法题-剪邮票/" rel="next" title="蓝桥杯算法题: 剪邮票">
+                <i class="fa fa-chevron-left"></i> 蓝桥杯算法题: 剪邮票
               </a>
             
           </div>
@@ -577,8 +510,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/11/02/蓝桥杯算法题：四平方和/" rel="prev" title="蓝桥杯算法题：四平方和">
-                蓝桥杯算法题：四平方和 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/11/05/Centos7安装Python3-6/" rel="prev" title="Centos7安装Python3.6">
+                Centos7安装Python3.6 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
