@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="Python,Linux,Django," />
+  <meta name="keywords" content="Linux,Python,Django," />
 
 
 
@@ -78,7 +78,7 @@
 
 
 <meta name="description" content="安装Nginx首先检查是否安装了gcc, openssl, zlib, pcre 1234rpm -q gccrpm -q opensslrpm -q zlibrpm -q pcre 如果提示没有安装通过以下命令安装： 1234yum -y install gccyum -y install opensslyum -y install zlibyum -y install pcre 下载Nginx">
-<meta name="keywords" content="Python,Linux,Django">
+<meta name="keywords" content="Linux,Python,Django">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nginx+Gunicorn部署Django">
 <meta property="og:url" content="http://yoursite.com/2017/11/05/Nginx-Gunicorn部署Django/index.html">
@@ -87,7 +87,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/nginx_setting.png">
 <meta property="og:image" content="http://yoursite.com/images/deploy_error.png">
-<meta property="og:updated_time" content="2017-11-05T08:15:33.774Z">
+<meta property="og:updated_time" content="2017-11-05T08:49:10.495Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nginx+Gunicorn部署Django">
 <meta name="twitter:description" content="安装Nginx首先检查是否安装了gcc, openssl, zlib, pcre 1234rpm -q gccrpm -q opensslrpm -q zlibrpm -q pcre 如果提示没有安装通过以下命令安装： 1234yum -y install gccyum -y install opensslyum -y install zlibyum -y install pcre 下载Nginx">
@@ -336,7 +336,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  686 字
+                  818 字
                 </span>
               
 
@@ -400,6 +400,10 @@
 <li><p>如果你使用是的腾讯云或阿里云（暂时只用过这两款，其它的不清楚是否需要），运行gunicorn后仍无法访问到Django应用，到<strong>控制台</strong>找到<strong>配置安全组</strong>，放行我们设置的端口号，具体如何设置里面有讲解。</p>
 </li>
 </ul>
+<h3 id="小插曲"><a href="#小插曲" class="headerlink" title="小插曲"></a>小插曲</h3><p>在本地运行Django应用时，出现了一个<strong>No module named _sqlite3</strong>的错误。上一次部署时也遇到了这个问题，还找了好久才找到解决了方法，然后忘记了记录，刚才遇到这个问题脸都白了，只有再去搜索下这个错误的解决方法，幸好很快找到了，在此记录下来，下次遇到再也不慌了。</p>
+<p>安装sqlite-devel</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install sqlite-devel</div></pre></td></tr></table></figure>
+<p>然后再重新编译一次Python就可以解决 </p>
 <h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p><a href="http://www.siguoya.name/pc/home/article/46" target="_blank" rel="external">使用systemctl设置Nginx、PHP、Mysql开机启动</a></p>
 <p><a href="http://www.jianshu.com/p/8f1eb619ab1a" target="_blank" rel="external">CentOS 7 安装 Nginx</a></p>
 
@@ -479,9 +483,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
-          
             <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+          
+            <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
           
             <a href="/tags/Django/" rel="tag"><i class="fa fa-tag"></i> Django</a>
           
@@ -655,7 +659,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Nginx"><span class="nav-number">1.</span> <span class="nav-text">安装Nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载Nginx"><span class="nav-number">2.</span> <span class="nav-text">下载Nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译-amp-安装"><span class="nav-number">3.</span> <span class="nav-text">编译&安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置Nginx"><span class="nav-number">4.</span> <span class="nav-text">配置Nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将Nginx注册为系统服务-如果不需要可以直接跳过"><span class="nav-number">5.</span> <span class="nav-text">将Nginx注册为系统服务(如果不需要可以直接跳过)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#service文件说明"><span class="nav-number">5.1.</span> <span class="nav-text">.service文件说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关操作"><span class="nav-number">5.2.</span> <span class="nav-text">相关操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Gunicorn"><span class="nav-number">6.</span> <span class="nav-text">安装Gunicorn</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意："><span class="nav-number">6.1.</span> <span class="nav-text">注意：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考："><span class="nav-number">7.</span> <span class="nav-text">参考：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Nginx"><span class="nav-number">1.</span> <span class="nav-text">安装Nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载Nginx"><span class="nav-number">2.</span> <span class="nav-text">下载Nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译-amp-安装"><span class="nav-number">3.</span> <span class="nav-text">编译&安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置Nginx"><span class="nav-number">4.</span> <span class="nav-text">配置Nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将Nginx注册为系统服务-如果不需要可以直接跳过"><span class="nav-number">5.</span> <span class="nav-text">将Nginx注册为系统服务(如果不需要可以直接跳过)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#service文件说明"><span class="nav-number">5.1.</span> <span class="nav-text">.service文件说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关操作"><span class="nav-number">5.2.</span> <span class="nav-text">相关操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Gunicorn"><span class="nav-number">6.</span> <span class="nav-text">安装Gunicorn</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意："><span class="nav-number">6.1.</span> <span class="nav-text">注意：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小插曲"><span class="nav-number">6.2.</span> <span class="nav-text">小插曲</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考："><span class="nav-number">7.</span> <span class="nav-text">参考：</span></a></li></ol></div>
             
 
           </div>
