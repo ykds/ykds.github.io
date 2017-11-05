@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Python,Linux,Django," />
 
 
 
@@ -77,17 +77,21 @@
 
 
 
-<meta name="description" content="四平方和定理，又称为拉格朗日定理：每个正整数都可以表示为至多4个正整数的平方和。如果把0包括进去，就正好可以表示为4个数的平方和。比如：5 = 0^2 + 0^2 + 1^2 + 2^27 = 1^2 + 1^2 + 1^2 + 2^2（^符号表0方的意思）对于一个给定的正整数，可能存在多种平方和的表示法。要求你对4个数排序：0 &amp;lt;= a &amp;lt;= b &amp;lt;= c &amp;lt;= d并对">
+<meta name="description" content="安装Nginx首先检查是否安装了gcc, openssl, zlib, pcre 1234rpm -q gccrpm -q opensslrpm -q zlibrpm -q pcre 如果提示没有安装通过以下命令安装： 1234yum -y install gccyum -y install opensslyum -y install zlibyum -y install pcre 下载Nginx">
+<meta name="keywords" content="Python,Linux,Django">
 <meta property="og:type" content="article">
-<meta property="og:title" content="蓝桥杯算法题：四平方和">
-<meta property="og:url" content="http://yoursite.com/2017/11/02/蓝桥杯算法题：四平方和/index.html">
+<meta property="og:title" content="Nginx+Gunicorn部署Django">
+<meta property="og:url" content="http://yoursite.com/2017/11/05/Nginx-Gunicorn部署Django/index.html">
 <meta property="og:site_name" content="Sixpence">
-<meta property="og:description" content="四平方和定理，又称为拉格朗日定理：每个正整数都可以表示为至多4个正整数的平方和。如果把0包括进去，就正好可以表示为4个数的平方和。比如：5 = 0^2 + 0^2 + 1^2 + 2^27 = 1^2 + 1^2 + 1^2 + 2^2（^符号表0方的意思）对于一个给定的正整数，可能存在多种平方和的表示法。要求你对4个数排序：0 &amp;lt;= a &amp;lt;= b &amp;lt;= c &amp;lt;= d并对">
+<meta property="og:description" content="安装Nginx首先检查是否安装了gcc, openssl, zlib, pcre 1234rpm -q gccrpm -q opensslrpm -q zlibrpm -q pcre 如果提示没有安装通过以下命令安装： 1234yum -y install gccyum -y install opensslyum -y install zlibyum -y install pcre 下载Nginx">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-02T12:59:40.643Z">
+<meta property="og:image" content="http://yoursite.com/images/nginx_setting.png">
+<meta property="og:image" content="http://yoursite.com/images/deploy_error.png">
+<meta property="og:updated_time" content="2017-11-05T08:15:33.774Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="蓝桥杯算法题：四平方和">
-<meta name="twitter:description" content="四平方和定理，又称为拉格朗日定理：每个正整数都可以表示为至多4个正整数的平方和。如果把0包括进去，就正好可以表示为4个数的平方和。比如：5 = 0^2 + 0^2 + 1^2 + 2^27 = 1^2 + 1^2 + 1^2 + 2^2（^符号表0方的意思）对于一个给定的正整数，可能存在多种平方和的表示法。要求你对4个数排序：0 &amp;lt;= a &amp;lt;= b &amp;lt;= c &amp;lt;= d并对">
+<meta name="twitter:title" content="Nginx+Gunicorn部署Django">
+<meta name="twitter:description" content="安装Nginx首先检查是否安装了gcc, openssl, zlib, pcre 1234rpm -q gccrpm -q opensslrpm -q zlibrpm -q pcre 如果提示没有安装通过以下命令安装： 1234yum -y install gccyum -y install opensslyum -y install zlibyum -y install pcre 下载Nginx">
+<meta name="twitter:image" content="http://yoursite.com/images/nginx_setting.png">
 
 
 
@@ -117,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/11/02/蓝桥杯算法题：四平方和/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/05/Nginx-Gunicorn部署Django/"/>
 
 
 
 
 
-  <title>蓝桥杯算法题：四平方和 | Sixpence</title>
+  <title>Nginx+Gunicorn部署Django | Sixpence</title>
   
 
 
@@ -186,6 +190,14 @@
         </li>
       
         
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
@@ -198,14 +210,6 @@
           <a href="/archives" rel="section">
             
             归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-            关于
           </a>
         </li>
       
@@ -242,7 +246,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/02/蓝桥杯算法题：四平方和/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/05/Nginx-Gunicorn部署Django/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sixpence">
@@ -259,7 +263,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">蓝桥杯算法题：四平方和</h2>
+          <h2 class="post-title" itemprop="name headline">Nginx+Gunicorn部署Django</h2>
         
 
         <div class="post-meta">
@@ -271,8 +275,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-02T19:04:52+08:00">
-                2017-11-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-05T14:55:51+08:00">
+                2017-11-05
               </time>
             
 
@@ -294,8 +298,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
                   </a>
                 </span>
 
@@ -332,7 +336,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,203 字
+                  686 字
                 </span>
               
 
@@ -348,7 +352,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5 分钟
+                  3 分钟
                 </span>
               
             </div>
@@ -369,46 +373,35 @@
       
 
       
-        <blockquote>
-<p>四平方和定理，又称为拉格朗日定理：<br>每个正整数都可以表示为至多4个正整数的平方和。<br>如果把0包括进去，就正好可以表示为4个数的平方和。<br>比如：<br>5 = 0^2 + 0^2 + 1^2 + 2^2<br>7 = 1^2 + 1^2 + 1^2 + 2^2<br>（^符号表0方的意思）<br>对于一个给定的正整数，可能存在多种平方和的表示法。<br>要求你对4个数排序：<br>0 &lt;= a &lt;= b &lt;= c &lt;= d<br>并对所有的可能表示法按 a,b,c,d 为联合主键升序排列，最后输出第一个表示法<br>程序输入为一个正整数N (N&lt;5000000)<br>要求输出4个非负整数，按从小到大排序，中间用空格分开</p>
-<p>例如，输入：<br>5<br>则程序应该输出：<br>0 0 1 2<br>再例如，输入：<br>12<br>则程序应该输出：<br>0 2 2 2<br>再例如，输入：<br>773535<br>则程序应该输出：<br>1 1 267 838</p>
-</blockquote>
-<p>根据题目，我们可以得到3个信息：</p>
-<ol>
-<li><p>对于式子a^2 + b^2 + c^2 + d^2，我们只需要关注系数即可</p>
+        <h2 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h2><p>首先检查是否安装了gcc, openssl, zlib, pcre</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">rpm -q gcc</div><div class="line">rpm -q openssl</div><div class="line">rpm -q zlib</div><div class="line">rpm -q pcre</div></pre></td></tr></table></figure>
+<p>如果提示没有安装通过以下命令安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">yum -y install gcc</div><div class="line">yum -y install openssl</div><div class="line">yum -y install zlib</div><div class="line">yum -y install pcre</div></pre></td></tr></table></figure>
+<h2 id="下载Nginx"><a href="#下载Nginx" class="headerlink" title="下载Nginx"></a>下载Nginx</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://nginx.org/download/nginx-1.10.3.tar.gz</div></pre></td></tr></table></figure>
+<h2 id="编译-amp-安装"><a href="#编译-amp-安装" class="headerlink" title="编译&amp;安装"></a>编译&amp;安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">tar -zxvf nginx-1.10.3.tar.gz</div><div class="line">cd nginx-1.10.3.tar.gz</div><div class="line">./configure --prefix=/usr/local/nginx</div><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">启动：/usr/local/nginx/sbin/nginx</div><div class="line">重启：/usr/local/nginx/sbin/nginx –s reload</div><div class="line">停止：/usr/local/nginx/sbin/nginx –s stop</div></pre></td></tr></table></figure>
+<h2 id="配置Nginx"><a href="#配置Nginx" class="headerlink" title="配置Nginx"></a>配置Nginx</h2><p>打开Nginx配置文件：<strong>vim /usr/local/nginx/conf/nginx.conf</strong></p>
+<p>如下修改（proxy_pass的端口号可以自己选择，范围1024~65535）：</p>
+<p><img src="/images/nginx_setting.png" alt="image"></p>
+<p>然后启动/重启Nginx</p>
+<h2 id="将Nginx注册为系统服务-如果不需要可以直接跳过"><a href="#将Nginx注册为系统服务-如果不需要可以直接跳过" class="headerlink" title="将Nginx注册为系统服务(如果不需要可以直接跳过)"></a>将Nginx注册为系统服务(如果不需要可以直接跳过)</h2><p>vim /usr/lib/systemd/system/nginx.service<br>在nginx.service文件添加如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">[Unit]</div><div class="line">Description=nginx</div><div class="line">After=network.target</div><div class="line"></div><div class="line">[Service]</div><div class="line">Type=foring</div><div class="line">PIDFile=/usr/local/nginx/logs/nginx.pid</div><div class="line">ExecStart=/usr/local/nginx/sbin/nginx</div><div class="line">ExecReload=/usr/local/nginx/sbin/nginx -s reload</div><div class="line">ExecStop=/usr/local/nginx/sbin/nginx -s stop</div><div class="line">PrivateTmp=true</div><div class="line"></div><div class="line">[Install]</div><div class="line">WantedBy=multi-user.target</div></pre></td></tr></table></figure>
+<p>保存退出后，因为硬盘新添加了系统服务文件，所以要执行<strong>systemctl daemon-reload</strong>命令才能顺利添加服务。</p>
+<h3 id="service文件说明"><a href="#service文件说明" class="headerlink" title=".service文件说明"></a>.service文件说明</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[Unit]部分主要是对这个服务的说明，内容包括Description和After，Description用于描述服务，After用于描述服务类别</div><div class="line"></div><div class="line">[Service]部分是服务的关键，是服务的一些具体运行参数的设置</div><div class="line">Type=forking是后台运行的形式</div><div class="line">PIDFile为存放PID的文件路径</div><div class="line">ExecStart为服务的具体运行命令</div><div class="line">ExecReload为重启命令</div><div class="line">ExecStop为停止命令</div><div class="line">PrivateTmp=True表示给服务分配独立的临时空间。</div><div class="line">[Service]部分的启动、重启、停止命令全部要求使用绝对路径，使用相对路径则会报错！</div><div class="line"></div><div class="line">[Install]部分是服务安装的相关设置，可设置为多用户的</div></pre></td></tr></table></figure>
+<h3 id="相关操作"><a href="#相关操作" class="headerlink" title="相关操作"></a>相关操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">systemctl enable nginx.service   #设置服务开机自启</div><div class="line">systemctl start nginx.service    #运行服务</div><div class="line">systemctl stop nginx.service     #停止服务</div><div class="line">systemctl reload nginx.service   #重新加载服务</div></pre></td></tr></table></figure>
+<h2 id="安装Gunicorn"><a href="#安装Gunicorn" class="headerlink" title="安装Gunicorn"></a>安装Gunicorn</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install gunicorn</div></pre></td></tr></table></figure>
+<p>安装完成后切换到项目根目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gunicorn 项目名.wsgi:application --bind localhost:8000(Nginx上自己设置的端口) -D(后台运行)</div></pre></td></tr></table></figure>
+<p>此时可以通过访问主机的IP来访问我们的Django应用</p>
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><ul>
+<li><p>打开settings.py文件，找到<strong>ALLOWED_HOSTS = []</strong>，以字符串形式添加你的主机IP到里面，否则会报错</p>
+<p><img src="/images/deploy_error.png" alt="image"></p>
 </li>
-<li><p>系数从小到大排列为 a b c d，后面的每个系数都必须<strong>等于</strong>或<strong>大于</strong>前一个系数。如a=2，那么b只能是2、3、4······</p>
+<li><p>如果你使用是的腾讯云或阿里云（暂时只用过这两款，其它的不清楚是否需要），运行gunicorn后仍无法访问到Django应用，到<strong>控制台</strong>找到<strong>配置安全组</strong>，放行我们设置的端口号，具体如何设置里面有讲解。</p>
 </li>
-<li><p>一个整数可能有多种系数序列，但只取众多系数序列升序中的第一个。如整数12，其中两个系数序列是0 2 2 2、1 1 1 3，那么我们只能取0 2 2 2而不能1 1 1 3</p>
-<p>​</p>
-</li>
-</ol>
-<p>好了，有了这3点信息，我们开始进一步分析，整理思路，编写代码。</p>
-<p>假设式子为：a^2 + b^2 + c^2 + d^2</p>
-<p>因为我们只需要关注a、b、c、d四个系数，并且系数序列需要的是升序中的首个，那么我们可以用递归的方法，每一个递归层为一个项，那么整个递归就是4层，每层向系数中填入数值，当计算结果大于我们想要的结果时，返回到上一个系数，上一个系数加1后继续往下递归。如此循环直到最后找出可以算出结果的系数。</p>
-<p>举个例子：</p>
-<blockquote>
-<p>我们以12作为计结果，那么式子就变成a^2 + b^2 + c^2 + d^2 = 12</p>
-<p>从0开始：</p>
-<p>0^2 + 0^2 + 0^2 + 0^2 = 0 &lt; 12</p>
-<p>0^2 + 0^2 + 0^2 + 1^2 = 1 &lt; 12</p>
-<p>0^2 + 0^2 + 0^2 + 2^2 = 4 &lt;12</p>
-<p>​             …….</p>
-<p>0^2 + 0^2 + 0^2 + 4^2 = 16 &gt;12</p>
-<p>当d=4时，计算结果大于12，返回到c，c加1后继续递归，此时d就不能从0开始了，必须从1开始</p>
-<p>0^2 + 0^2 + 1^2 + 1^2 = 2 &lt; 12</p>
-<p>0^2 + 0^2 + 1^2 + 2^2 = 5 &lt; 12</p>
-<p>0^2 + 0^2 + 1^2 + 3^2 = 10 &lt; 12</p>
-<p>0^2 + 0^2 + 1^2 + 4^2 = 17 &gt; 12</p>
-<p>同是当d=4时结果大于12，重复上面过程</p>
-<p>0^2 + 0^2 + 2^2 + 2^2 = 8 &lt; 12</p>
-<p>0^2 + 0^2 + 2^2 + 3^2 = 14 &gt; 12</p>
-<p>此时，返回c加1后发现：0^2 + 0^2 + 3^2 + 3^2 = 18 &gt; 12， 第一次计算就大于12了，那接下来无论是c还是d都没必要继续增加了，计算结果一定比12大，那么现在就要返回到b，再重复上面的操作</p>
-<p>从0^2 + 1^2 + 1^2 + 1^2 = 3 开始</p>
-<p>一直到0^2 + 2^2 + 2^2 + 2^2 时，计算结果刚好是12，那么就可以输出这个系数序列0 2 2 2 </p>
-</blockquote>
-<p>Java代码实现：    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">import java.util.Scanner;</div><div class="line"></div><div class="line">public class Lagrange &#123;</div><div class="line">	//四个系数</div><div class="line">    static int a, b, c, d = 0;</div><div class="line">    //给出的整数</div><div class="line">    static int result = 0;</div><div class="line"></div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">    	Scanner in = new Scanner(System.in);</div><div class="line">        result = in.nextInt();</div><div class="line">        dfs(1, 0);</div><div class="line">    &#125;</div><div class="line">	</div><div class="line">	/*</div><div class="line">	depth: 递归层级</div><div class="line">	start: 开始填入的数值</div><div class="line">	return: 如果在第一次计算就大于结果时，返回当前系数，反之返回-1</div><div class="line">	</div><div class="line">	当depth递归导数在为1，2，3时，暂时设置a,b,c的值，然后向下递归，当递归到第4层时，</div><div class="line">	开始计算结果，计算结果等于目的结果则返回系数序列，小于则继续递增计算，</div><div class="line">	大于则返回上一层。</div><div class="line">	*/</div><div class="line">    public static int dfs(int depth, int start)&#123;</div><div class="line">    	//用于判断是否第一次计算就失败</div><div class="line">        boolean first = true;</div><div class="line">        if(depth == 4)&#123;</div><div class="line">            for(int i = start; ; i++)&#123;</div><div class="line">                if(a*a + b*b + c*c + i*i == result)&#123;</div><div class="line">                    first = false;</div><div class="line">                    d = i;</div><div class="line">                    System.out.println(a+ &quot; &quot; + b + &quot; &quot; + c + &quot; &quot; + d);</div><div class="line">                    System.exit(0);</div><div class="line">                &#125;else if(a*a + b*b + c*c + i*i &gt; result)&#123;</div><div class="line">                    if(first) return i;</div><div class="line">                    return -1;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        for(int i = start; ; i++)&#123;</div><div class="line">            switch (depth)&#123;</div><div class="line">                case 1: a=i; break;</div><div class="line">                case 2: b=i; break;</div><div class="line">                case 3: c=i; break;</div><div class="line">                default:break;</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">            //第一次计算失败会返回d的系数，如果d的系数与当前层的系数相等的话，</div><div class="line">            //说明当前层接下来的数值也不行，直接返回上一层</div><div class="line">            int temp = dfs(depth+1, i);</div><div class="line">            if( temp == i )&#123;</div><div class="line">                return i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</ul>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p><a href="http://www.siguoya.name/pc/home/article/46" target="_blank" rel="external">使用systemctl设置Nginx、PHP、Mysql开机启动</a></p>
+<p><a href="http://www.jianshu.com/p/8f1eb619ab1a" target="_blank" rel="external">CentOS 7 安装 Nginx</a></p>
 
       
     </div>
@@ -425,7 +418,7 @@
 	      </li>
 	      <li class="post-copyright-link">
 	        <strong>本文链接：</strong>
-	        <a href="/2017/11/02/蓝桥杯算法题：四平方和/" title="蓝桥杯算法题：四平方和">2017/11/02/蓝桥杯算法题：四平方和/</a>
+	        <a href="/2017/11/05/Nginx-Gunicorn部署Django/" title="Nginx+Gunicorn部署Django">2017/11/05/Nginx-Gunicorn部署Django/</a>
 	      </li>
 	      <li class="post-copyright-license">
 	        <strong>版权声明： </strong>
@@ -484,6 +477,16 @@
        
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+          
+            <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+          
+            <a href="/tags/Django/" rel="tag"><i class="fa fa-tag"></i> Django</a>
+          
+        </div>
+      
 
       
       
@@ -493,8 +496,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/28/蓝桥杯算法题-剪邮票/" rel="next" title="蓝桥杯算法题: 剪邮票">
-                <i class="fa fa-chevron-left"></i> 蓝桥杯算法题: 剪邮票
+              <a href="/2017/11/05/Centos7安装Python3-6/" rel="next" title="Centos7安装Python3.6">
+                <i class="fa fa-chevron-left"></i> Centos7安装Python3.6
               </a>
             
           </div>
@@ -558,8 +561,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -578,7 +590,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -589,12 +601,21 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
             
 
           </nav>
@@ -624,6 +645,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Nginx"><span class="nav-number">1.</span> <span class="nav-text">安装Nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载Nginx"><span class="nav-number">2.</span> <span class="nav-text">下载Nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译-amp-安装"><span class="nav-number">3.</span> <span class="nav-text">编译&安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置Nginx"><span class="nav-number">4.</span> <span class="nav-text">配置Nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将Nginx注册为系统服务-如果不需要可以直接跳过"><span class="nav-number">5.</span> <span class="nav-text">将Nginx注册为系统服务(如果不需要可以直接跳过)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#service文件说明"><span class="nav-number">5.1.</span> <span class="nav-text">.service文件说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关操作"><span class="nav-number">5.2.</span> <span class="nav-text">相关操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Gunicorn"><span class="nav-number">6.</span> <span class="nav-text">安装Gunicorn</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意："><span class="nav-number">6.1.</span> <span class="nav-text">注意：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考："><span class="nav-number">7.</span> <span class="nav-text">参考：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
