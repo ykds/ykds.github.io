@@ -87,7 +87,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/nginx_setting.png">
 <meta property="og:image" content="http://yoursite.com/images/deploy_error.png">
-<meta property="og:updated_time" content="2017-11-05T08:49:10.495Z">
+<meta property="og:updated_time" content="2018-01-08T03:27:01.281Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nginx+Gunicorn部署Django">
 <meta name="twitter:description" content="安装Nginx首先检查是否安装了gcc, openssl, zlib, pcre 1234rpm -q gccrpm -q opensslrpm -q zlibrpm -q pcre 如果提示没有安装通过以下命令安装： 1234yum -y install gccyum -y install opensslyum -y install zlibyum -y install pcre 下载Nginx">
@@ -336,7 +336,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  818 字
+                  816 字
                 </span>
               
 
@@ -378,7 +378,7 @@
 <p>如果提示没有安装通过以下命令安装：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">yum -y install gcc</div><div class="line">yum -y install openssl</div><div class="line">yum -y install zlib</div><div class="line">yum -y install pcre</div></pre></td></tr></table></figure>
 <h2 id="下载Nginx"><a href="#下载Nginx" class="headerlink" title="下载Nginx"></a>下载Nginx</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://nginx.org/download/nginx-1.10.3.tar.gz</div></pre></td></tr></table></figure>
-<h2 id="编译-amp-安装"><a href="#编译-amp-安装" class="headerlink" title="编译&amp;安装"></a>编译&amp;安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">tar -zxvf nginx-1.10.3.tar.gz</div><div class="line">cd nginx-1.10.3.tar.gz</div><div class="line">./configure --prefix=/usr/local/nginx</div><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure>
+<h2 id="编译-amp-安装"><a href="#编译-amp-安装" class="headerlink" title="编译&amp;安装"></a>编译&amp;安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">tar -zxvf nginx-1.10.3.tar.gz</div><div class="line">cd nginx-1.10.3</div><div class="line">./configure --prefix=/usr/local/nginx</div><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">启动：/usr/local/nginx/sbin/nginx</div><div class="line">重启：/usr/local/nginx/sbin/nginx –s reload</div><div class="line">停止：/usr/local/nginx/sbin/nginx –s stop</div></pre></td></tr></table></figure>
 <h2 id="配置Nginx"><a href="#配置Nginx" class="headerlink" title="配置Nginx"></a>配置Nginx</h2><p>打开Nginx配置文件：<strong>vim /usr/local/nginx/conf/nginx.conf</strong></p>
 <p>如下修改（proxy_pass的端口号可以自己选择，范围1024~65535）：</p>
@@ -684,7 +684,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
