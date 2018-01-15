@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="Python,Linux," />
+  <meta name="keywords" content="Django," />
 
 
 
@@ -77,20 +77,21 @@
 
 
 
-<meta name="description" content="准备编译环境1yum install zlib-devel bzip2-devel openssl-devel ncurese-devel zlib* 下载Python3.61wget https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tar.xz 编译&amp;amp;安装1234tar -Jxvf Python-3.6.0.tar.xzcd Py">
-<meta name="keywords" content="Python,Linux">
+<meta name="description" content="设计验证码模型123456789101112131415161718class EmailVerifyCode(models.Model):    SEND_TYPE = (        (&apos;register&apos;, &apos;注册&apos;),        (&apos;forger&apos;, &apos;,忘记密码&apos;),    )    code = models.CharField(max_length=6, verbose_nam">
+<meta name="keywords" content="Django">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Centos7安装Python3.6">
-<meta property="og:url" content="http://yoursite.com/2017/11/05/Centos7安装Python3-6/index.html">
+<meta property="og:title" content="Django REST framework实现发送验证码邮件">
+<meta property="og:url" content="http://yoursite.com/2018/01/15/Django-REST-framework实现发送验证码邮件/index.html">
 <meta property="og:site_name" content="Sixpence">
-<meta property="og:description" content="准备编译环境1yum install zlib-devel bzip2-devel openssl-devel ncurese-devel zlib* 下载Python3.61wget https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tar.xz 编译&amp;amp;安装1234tar -Jxvf Python-3.6.0.tar.xzcd Py">
+<meta property="og:description" content="设计验证码模型123456789101112131415161718class EmailVerifyCode(models.Model):    SEND_TYPE = (        (&apos;register&apos;, &apos;注册&apos;),        (&apos;forger&apos;, &apos;,忘记密码&apos;),    )    code = models.CharField(max_length=6, verbose_nam">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/python_install.png">
-<meta property="og:updated_time" content="2018-01-08T03:28:46.931Z">
+<meta property="og:image" content="http://yoursite.com/images/mail_error1.png">
+<meta property="og:image" content="http://yoursite.com/images/mail_error2.png">
+<meta property="og:updated_time" content="2018-01-15T11:48:37.552Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Centos7安装Python3.6">
-<meta name="twitter:description" content="准备编译环境1yum install zlib-devel bzip2-devel openssl-devel ncurese-devel zlib* 下载Python3.61wget https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tar.xz 编译&amp;amp;安装1234tar -Jxvf Python-3.6.0.tar.xzcd Py">
-<meta name="twitter:image" content="http://yoursite.com/images/python_install.png">
+<meta name="twitter:title" content="Django REST framework实现发送验证码邮件">
+<meta name="twitter:description" content="设计验证码模型123456789101112131415161718class EmailVerifyCode(models.Model):    SEND_TYPE = (        (&apos;register&apos;, &apos;注册&apos;),        (&apos;forger&apos;, &apos;,忘记密码&apos;),    )    code = models.CharField(max_length=6, verbose_nam">
+<meta name="twitter:image" content="http://yoursite.com/images/mail_error1.png">
 
 
 
@@ -120,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/11/05/Centos7安装Python3-6/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/15/Django-REST-framework实现发送验证码邮件/"/>
 
 
 
 
 
-  <title>Centos7安装Python3.6 | Sixpence</title>
+  <title>Django REST framework实现发送验证码邮件 | Sixpence</title>
   
 
 
@@ -245,7 +246,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/05/Centos7安装Python3-6/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/15/Django-REST-framework实现发送验证码邮件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sixpence">
@@ -262,7 +263,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Centos7安装Python3.6</h2>
+          <h2 class="post-title" itemprop="name headline">Django REST framework实现发送验证码邮件</h2>
         
 
         <div class="post-meta">
@@ -274,8 +275,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-05T12:49:48+08:00">
-                2017-11-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-15T17:13:54+08:00">
+                2018-01-15
               </time>
             
 
@@ -297,8 +298,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
+                  <a href="/categories/Django/" itemprop="url" rel="index">
+                    <span itemprop="name">Django</span>
                   </a>
                 </span>
 
@@ -335,7 +336,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  187 字
+                  938 字
                 </span>
               
 
@@ -351,7 +352,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  4 分钟
                 </span>
               
             </div>
@@ -372,23 +373,38 @@
       
 
       
-        <h2 id="准备编译环境"><a href="#准备编译环境" class="headerlink" title="准备编译环境"></a>准备编译环境</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install zlib-devel bzip2-devel openssl-devel ncurese-devel zlib*</div></pre></td></tr></table></figure>
-<h2 id="下载Python3-6"><a href="#下载Python3-6" class="headerlink" title="下载Python3.6"></a>下载Python3.6</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tar.xz</div></pre></td></tr></table></figure>
-<h2 id="编译-amp-安装"><a href="#编译-amp-安装" class="headerlink" title="编译&amp;安装"></a>编译&amp;安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">tar -Jxvf Python-3.6.0.tar.xz</div><div class="line">cd Python-3.6.0</div><div class="line">./configure --prefix=/usr/local/python3</div><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure>
-<p>如果在执行./configure –prefix=/usr/local/python3出现：</p>
-<blockquote>
-<p>configure: error: no acceptable C compiler found in $PATH</p>
-</blockquote>
-<p>安装gcc再重新执行即可：</p>
-<blockquote>
-<p>yum install gcc</p>
-</blockquote>
-<h2 id="版本共存"><a href="#版本共存" class="headerlink" title="版本共存"></a>版本共存</h2><p>在这里我选择保留原来的Python2.x，因为替换系统的Python2.x 需要更改一些设置，比较麻烦。</p>
-<p>所以我们只新建指向Python3和pip3的软连接：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ln -s /usr/local/python3/bin/python3.6 /usr/bin/python3</div><div class="line">ln -s /usr/local/python3/bin/pip3 /usr/bin/pip3</div></pre></td></tr></table></figure>
-<p>检查一下版本：</p>
-<p><img src="/images/python_install.png" alt="image"></p>
-<p>到此已经完成Python3的安装</p>
+        <h2 id="设计验证码模型"><a href="#设计验证码模型" class="headerlink" title="设计验证码模型"></a>设计验证码模型</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">EmailVerifyCode</span><span class="params">(models.Model)</span>:</span></div><div class="line"></div><div class="line">    SEND_TYPE = (</div><div class="line">        (<span class="string">'register'</span>, <span class="string">'注册'</span>),</div><div class="line">        (<span class="string">'forger'</span>, <span class="string">',忘记密码'</span>),</div><div class="line">    )</div><div class="line"></div><div class="line">    code = models.CharField(max_length=<span class="number">6</span>, verbose_name=<span class="string">'验证码'</span>)</div><div class="line">    email = models.EmailField(max_length=<span class="number">50</span>, verbose_name=<span class="string">'邮箱'</span>)</div><div class="line">    send_type = models.CharField(max_length=<span class="number">10</span>, choices=SEND_TYPE, verbose_name=<span class="string">'发送类型'</span>)</div><div class="line">    add_time = models.DateTimeField(verbose_name=<span class="string">'添加时间'</span>, default=datetime.now)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.code</div><div class="line"></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></div><div class="line">        verbose_name = <span class="string">'验证码'</span></div><div class="line">        verbose_name_plural = verbose_name</div></pre></td></tr></table></figure>
+<p>验证码可能会用于注册、找回密码等功能，所以设置了一个 send_type 字段来区分这个验证码是用于注册还是找回密码。</p>
+<h2 id="验证码序列化类"><a href="#验证码序列化类" class="headerlink" title="验证码序列化类"></a>验证码序列化类</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">VerifyCodeSerializer</span><span class="params">(serializers.Serializer)</span>:</span></div><div class="line"></div><div class="line">    email = serializers.EmailField(max_length=<span class="number">50</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">validate_email</span><span class="params">(self, email)</span>:</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> UserProfile.objects.filter(email=email):</div><div class="line">            <span class="keyword">raise</span> serializers.ValidationError(<span class="string">'用户已存在'</span>)</div><div class="line"></div><div class="line">        one_minute_age = datetime.now() - timedelta(minutes=<span class="number">1</span>)</div><div class="line">        <span class="keyword">if</span> EmailVerifyCode.objects.filter(add_time__gt=one_minute_age, email=email):</div><div class="line">            <span class="keyword">raise</span> serializers.ValidationError(<span class="string">'距离上一次发送未超过60s'</span>)</div><div class="line"></div><div class="line">        <span class="keyword">return</span> email</div></pre></td></tr></table></figure>
+<p>这个类继承于 Serializer 类，而不继承于 ModelSerializer 类，因为这个类只是用于验证用户传送过来的 email，这里共验证三个方面：</p>
+<ol>
+<li>Email 的格式是否正解</li>
+<li>用户是不是已经存在（上面代码的实现用于注册功能）</li>
+<li>发送频率为 60s 发送一次验证码请求</li>
+</ol>
+<p>对于第 1 点，通过 EmailField 自带的验证，实现对 email 字符串的格式验证。</p>
+<p>对于第 2，3 点，通过实现 validate_email 方法验证，首先查询这个email对应的用户是否存在，存在就抛出异常；接着计算上一次验证码请求（生成并存储到数据库）到现在有没有超过 60s，如果没有则抛异常。</p>
+<p>验证完后，必须返回email。</p>
+<h2 id="发送邮件方法"><a href="#发送邮件方法" class="headerlink" title="发送邮件方法"></a>发送邮件方法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> choice</div><div class="line"></div><div class="line"><span class="keyword">from</span> django.core.mail <span class="keyword">import</span> send_mail</div><div class="line"></div><div class="line"><span class="keyword">from</span> users.models <span class="keyword">import</span> EmailVerifyCode</div><div class="line"><span class="keyword">from</span> wechatRead.settings_dev <span class="keyword">import</span> EMAIL_FROM</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_code</span><span class="params">()</span>:</span></div><div class="line">    seeds = <span class="string">'1234567890qwertyuiopasdfghjklzxcvbnm'</span></div><div class="line">    random_str = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">6</span>):</div><div class="line">        random_str.append(choice(seeds))</div><div class="line">    <span class="keyword">return</span> <span class="string">''</span>.join(random_str)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">send_email</span><span class="params">(email, send_type=<span class="string">'register'</span>)</span>:</span></div><div class="line">	</div><div class="line">    code = generate_code()</div><div class="line">    email_record = EmailVerifyCode()</div><div class="line">    email_record.email = email</div><div class="line">    email_record.code = code</div><div class="line">    email_record.send_type = <span class="string">'register'</span></div><div class="line"></div><div class="line">    <span class="keyword">if</span> send_type == <span class="string">'register'</span>:</div><div class="line">        email_title = <span class="string">'微信读书注册验证码'</span></div><div class="line">        email_body = <span class="string">'微信读书的注册验证码为： &#123;0&#125;'</span>.format(code)</div><div class="line">        send_mail(email_title, email_body, EMAIL_FROM, [email])</div><div class="line">        email_record.save()</div><div class="line"></div><div class="line">    <span class="keyword">return</span> code</div></pre></td></tr></table></figure>
+<p>这里有两个方法，generate_code 用于生成验证码，send_email 用于发送邮件。</p>
+<p>这里生成的验证码设置为 6 位，可以根据情况自行修改。</p>
+<p>重点在于 send_email 方法，方法接收两个参数，发送方邮箱 emai l和验证码类型 send_type（用于注册还是找回密码），默认是注册。 </p>
+<p>第 27 行的 send_mail 方法是发送邮件功能的核心，需要提供 4 个参数，邮件的标题，邮件的正文，邮件的发送方邮箱地址，接收方的邮件地址（传送的是一个列表）。</p>
+<p>发送邮件的接口方法就完成了，但是现在还不能发送，还是在 settings 文件中添加如下配置：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">EMAIL_HOST = <span class="string">'smtp.qq.com'</span></div><div class="line">EMAIL_PORT = <span class="number">465</span></div><div class="line">EMAIL_HOST_USER = <span class="string">'发送方的邮箱'</span></div><div class="line">EMAIL_HOST_PASSWORD = <span class="string">'授权码'</span></div><div class="line">EMAIL_USE_TLS = <span class="keyword">False</span></div><div class="line">EMAIL_USE_SSL = <span class="keyword">True</span></div><div class="line">EMAIL_FROM = <span class="string">'发送方的邮箱'</span></div></pre></td></tr></table></figure>
+<p>配置好之后就可以发送邮件了。</p>
+<p>另外，这个配置中有几个需要注意的地方：</p>
+<ol>
+<li>在发送邮件之前必须开通smtp功能。我使用的是 qq 的 smtp，要到 qq 邮箱中的设置中开启 smtp 功能，授权码在开启 smtp 功能时可以获得。</li>
+<li>如果 EMAIL_PORT= 25， 那么必须设置 EMAIL_USE_TLS = True，EMAIL_USE_SSL = False</li>
+<li>如果 EMAIL_PORT= 465 或 994， 那么必须设置 EMAIL_USE_TLS = False，EMAIL_USE_SSL = True</li>
+</ol>
+<h2 id="发送邮件时报错和解决方法"><a href="#发送邮件时报错和解决方法" class="headerlink" title="发送邮件时报错和解决方法"></a>发送邮件时报错和解决方法</h2><p>###SMTPHeloError</p>
+<p><img src="/images/mail_error1.png" alt="image"></p>
+<p>一开始遇到这个问题时，我用的是 163 的 smtp，谷歌后说是应该把 EMAIL_USE_SSL 设为 False ，但是设置后还是报同样的错误，之后发现原来是 163 的问题，我换成 qq 的 smtp 这个错误就解决了。</p>
+<p>###SMTPAuthenticationError</p>
+<p><img src="/images/mail_error2.png" alt="image"></p>
+<p>从报错类型我也多少可以猜到是认证问题，可能是授权码错误，我遇到这个错误正是授权码错了，改正确后异常也解决了。</p>
 
       
     </div>
@@ -405,7 +421,7 @@
 	      </li>
 	      <li class="post-copyright-link">
 	        <strong>本文链接：</strong>
-	        <a href="/2017/11/05/Centos7安装Python3-6/" title="Centos7安装Python3.6">2017/11/05/Centos7安装Python3-6/</a>
+	        <a href="/2018/01/15/Django-REST-framework实现发送验证码邮件/" title="Django REST framework实现发送验证码邮件">2018/01/15/Django-REST-framework实现发送验证码邮件/</a>
 	      </li>
 	      <li class="post-copyright-license">
 	        <strong>版权声明： </strong>
@@ -466,9 +482,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
-          
-            <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+            <a href="/tags/Django/" rel="tag"><i class="fa fa-tag"></i> Django</a>
           
         </div>
       
@@ -481,8 +495,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/02/蓝桥杯算法题：四平方和/" rel="next" title="蓝桥杯算法题：四平方和">
-                <i class="fa fa-chevron-left"></i> 蓝桥杯算法题：四平方和
+              <a href="/2017/11/15/蓝桥杯算法题：压缩变换/" rel="next" title="蓝桥杯算法题：压缩变换">
+                <i class="fa fa-chevron-left"></i> 蓝桥杯算法题：压缩变换
               </a>
             
           </div>
@@ -490,10 +504,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/05/Nginx-Gunicorn部署Django/" rel="prev" title="Nginx+Gunicorn部署Django">
-                Nginx+Gunicorn部署Django <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -644,7 +654,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备编译环境"><span class="nav-number">1.</span> <span class="nav-text">准备编译环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载Python3-6"><span class="nav-number">2.</span> <span class="nav-text">下载Python3.6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译-amp-安装"><span class="nav-number">3.</span> <span class="nav-text">编译&安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版本共存"><span class="nav-number">4.</span> <span class="nav-text">版本共存</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#设计验证码模型"><span class="nav-number">1.</span> <span class="nav-text">设计验证码模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证码序列化类"><span class="nav-number">2.</span> <span class="nav-text">验证码序列化类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发送邮件方法"><span class="nav-number">3.</span> <span class="nav-text">发送邮件方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发送邮件时报错和解决方法"><span class="nav-number">4.</span> <span class="nav-text">发送邮件时报错和解决方法</span></a></li></ol></div>
             
 
           </div>
