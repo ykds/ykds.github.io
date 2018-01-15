@@ -87,7 +87,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/mail_error1.png">
 <meta property="og:image" content="http://yoursite.com/images/mail_error2.png">
-<meta property="og:updated_time" content="2018-01-15T11:48:37.552Z">
+<meta property="og:updated_time" content="2018-01-15T12:03:58.005Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django REST framework实现发送验证码邮件">
 <meta name="twitter:description" content="设计验证码模型123456789101112131415161718class EmailVerifyCode(models.Model):    SEND_TYPE = (        (&apos;register&apos;, &apos;注册&apos;),        (&apos;forger&apos;, &apos;,忘记密码&apos;),    )    code = models.CharField(max_length=6, verbose_nam">
@@ -336,7 +336,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  938 字
+                  1,102 字
                 </span>
               
 
@@ -352,7 +352,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4 分钟
+                  5 分钟
                 </span>
               
             </div>
@@ -390,20 +390,22 @@
 <p>这里生成的验证码设置为 6 位，可以根据情况自行修改。</p>
 <p>重点在于 send_email 方法，方法接收两个参数，发送方邮箱 emai l和验证码类型 send_type（用于注册还是找回密码），默认是注册。 </p>
 <p>第 27 行的 send_mail 方法是发送邮件功能的核心，需要提供 4 个参数，邮件的标题，邮件的正文，邮件的发送方邮箱地址，接收方的邮件地址（传送的是一个列表）。</p>
-<p>发送邮件的接口方法就完成了，但是现在还不能发送，还是在 settings 文件中添加如下配置：</p>
+<p>发送邮件的接口方法就完成了，但是现在还不能发送，还要在 settings 文件中添加如下配置：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">EMAIL_HOST = <span class="string">'smtp.qq.com'</span></div><div class="line">EMAIL_PORT = <span class="number">465</span></div><div class="line">EMAIL_HOST_USER = <span class="string">'发送方的邮箱'</span></div><div class="line">EMAIL_HOST_PASSWORD = <span class="string">'授权码'</span></div><div class="line">EMAIL_USE_TLS = <span class="keyword">False</span></div><div class="line">EMAIL_USE_SSL = <span class="keyword">True</span></div><div class="line">EMAIL_FROM = <span class="string">'发送方的邮箱'</span></div></pre></td></tr></table></figure>
-<p>配置好之后就可以发送邮件了。</p>
 <p>另外，这个配置中有几个需要注意的地方：</p>
 <ol>
 <li>在发送邮件之前必须开通smtp功能。我使用的是 qq 的 smtp，要到 qq 邮箱中的设置中开启 smtp 功能，授权码在开启 smtp 功能时可以获得。</li>
 <li>如果 EMAIL_PORT= 25， 那么必须设置 EMAIL_USE_TLS = True，EMAIL_USE_SSL = False</li>
 <li>如果 EMAIL_PORT= 465 或 994， 那么必须设置 EMAIL_USE_TLS = False，EMAIL_USE_SSL = True</li>
 </ol>
-<h2 id="发送邮件时报错和解决方法"><a href="#发送邮件时报错和解决方法" class="headerlink" title="发送邮件时报错和解决方法"></a>发送邮件时报错和解决方法</h2><p>###SMTPHeloError</p>
-<p><img src="/images/mail_error1.png" alt="image"></p>
+<h2 id="验证码Class-Based-View"><a href="#验证码Class-Based-View" class="headerlink" title="验证码Class-Based-View"></a>验证码Class-Based-View</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">VerifyCodeViewSet</span><span class="params">(viewsets.GenericViewSet, mixins.CreateModelMixin)</span>:</span></div><div class="line"></div><div class="line">    queryset = EmailVerifyCode.objects.all()</div><div class="line">    serializer_class = VerifyCodeSerializer</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">create</span><span class="params">(self, request, *args, **kwargs)</span>:</span></div><div class="line">        serializer = self.get_serializer(data=request.data)</div><div class="line">        serializer.is_valid(raise_exception=<span class="keyword">True</span>)</div><div class="line"></div><div class="line">        email = serializer.validated_data[<span class="string">'email'</span>]</div><div class="line">        code = send_email(email, <span class="string">'register'</span>)</div><div class="line"></div><div class="line">        <span class="keyword">return</span> Response(&#123;</div><div class="line">            <span class="string">'email'</span>: email,</div><div class="line">            <span class="string">'code'</span>: code,</div><div class="line">        &#125;, status=status.HTTP_201_CREATED)</div></pre></td></tr></table></figure>
+<p>这里主要是覆盖了 create 方法，下面的是源码中的 create 方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">create</span><span class="params">(self, request, *args, **kwargs)</span>:</span></div><div class="line">    serializer = self.get_serializer(data=request.data)</div><div class="line">    serializer.is_valid(raise_exception=<span class="keyword">True</span>)</div><div class="line">    self.perform_create(serializer)</div><div class="line">    headers = self.get_success_headers(serializer.data)</div><div class="line">    <span class="keyword">return</span> Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)</div></pre></td></tr></table></figure>
+<p>对比可以看出，其实就是把源码最后的三行代码换为发送代码的一些逻辑。</p>
+<p>先从 validated_data 中取出验证过的 email ，然后调用刚刚我们自己实现的 send_email 接口，最后把 email 和 code 返回到前端。</p>
+<h2 id="发送邮件时报错和解决方法"><a href="#发送邮件时报错和解决方法" class="headerlink" title="发送邮件时报错和解决方法"></a>发送邮件时报错和解决方法</h2><h3 id="SMTPHeloError"><a href="#SMTPHeloError" class="headerlink" title="SMTPHeloError"></a>SMTPHeloError</h3><p><img src="/images/mail_error1.png" alt="image"></p>
 <p>一开始遇到这个问题时，我用的是 163 的 smtp，谷歌后说是应该把 EMAIL_USE_SSL 设为 False ，但是设置后还是报同样的错误，之后发现原来是 163 的问题，我换成 qq 的 smtp 这个错误就解决了。</p>
-<p>###SMTPAuthenticationError</p>
-<p><img src="/images/mail_error2.png" alt="image"></p>
+<h3 id="SMTPAuthenticationError"><a href="#SMTPAuthenticationError" class="headerlink" title="SMTPAuthenticationError"></a>SMTPAuthenticationError</h3><p><img src="/images/mail_error2.png" alt="image"></p>
 <p>从报错类型我也多少可以猜到是认证问题，可能是授权码错误，我遇到这个错误正是授权码错了，改正确后异常也解决了。</p>
 
       
@@ -654,7 +656,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#设计验证码模型"><span class="nav-number">1.</span> <span class="nav-text">设计验证码模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证码序列化类"><span class="nav-number">2.</span> <span class="nav-text">验证码序列化类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发送邮件方法"><span class="nav-number">3.</span> <span class="nav-text">发送邮件方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发送邮件时报错和解决方法"><span class="nav-number">4.</span> <span class="nav-text">发送邮件时报错和解决方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#设计验证码模型"><span class="nav-number">1.</span> <span class="nav-text">设计验证码模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证码序列化类"><span class="nav-number">2.</span> <span class="nav-text">验证码序列化类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发送邮件方法"><span class="nav-number">3.</span> <span class="nav-text">发送邮件方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证码Class-Based-View"><span class="nav-number">4.</span> <span class="nav-text">验证码Class-Based-View</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发送邮件时报错和解决方法"><span class="nav-number">5.</span> <span class="nav-text">发送邮件时报错和解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SMTPHeloError"><span class="nav-number">5.1.</span> <span class="nav-text">SMTPHeloError</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SMTPAuthenticationError"><span class="nav-number">5.2.</span> <span class="nav-text">SMTPAuthenticationError</span></a></li></ol></li></ol></div>
             
 
           </div>
