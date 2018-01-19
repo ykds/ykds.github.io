@@ -85,7 +85,7 @@
 <meta property="og:site_name" content="Sixpence">
 <meta property="og:description" content="今天在写代码时有一个地方需要重写 create() 方法，但是重写后发现总是报错，一气之下就打开源码好好研究下 create() 方法的实现原理。至于我到底把 create() 这个方法重写成怎么个惨状就忽略吧，重点是要把 create() 切开来，看看它到底长个啥样。 先看看 create() 有哪些代码，逐行的去剖析。 123456def create(self, request, *args">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-19T02:51:03.929Z">
+<meta property="og:updated_time" content="2018-01-19T03:02:08.426Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DRF: CreateModelMixin的 create() 方法源码分析">
 <meta name="twitter:description" content="今天在写代码时有一个地方需要重写 create() 方法，但是重写后发现总是报错，一气之下就打开源码好好研究下 create() 方法的实现原理。至于我到底把 create() 这个方法重写成怎么个惨状就忽略吧，重点是要把 create() 切开来，看看它到底长个啥样。 先看看 create() 有哪些代码，逐行的去剖析。 123456def create(self, request, *args">
@@ -333,7 +333,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,554 字
+                  1,567 字
                 </span>
               
 
@@ -397,9 +397,9 @@
 <p>为了看得方便，把<code>assert</code>的部分都删了，那些不是重点，只要看看那些英文解释就能知道它们的作用。</p>
 <p><code>validated_data</code>包含我们验证过的数据和额外通过调用<code>save()</code>时传进来的数据，重点是下面<code>if</code>的代码块，当新建<code>serializer</code>对象时如果把实例也传进来的话，<code>self.instance</code>就不是<code>None</code>，就会进行更新实例的数据的操作，反之，就会新建一个实例。比如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">user = User()</div><div class="line">data = &#123;&apos;name&apos;: &apos;tom&apos;, &apos;age&apos;: 12&#125;</div><div class="line">serializer = UserSerializer(user, data=data)</div><div class="line">serializer.save()</div></pre></td></tr></table></figure>
-<p>user 实例数据就更新为<code>name = tom ，age = 12</code>。而</p>
+<p>这时是更新 <code>user</code> 实例，<code>user</code> 实例数据就更新为<code>name = tom ，age = 12</code>。而</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">data = &#123;&apos;name&apos;: &apos;tom&apos;, &apos;age&apos;: 12&#125;</div><div class="line">serializer = UserSerializer(data=data)</div><div class="line">user = serializer.save()</div></pre></td></tr></table></figure>
-<p>就会生成一个和上面一样的<code>user</code>实例。</p>
+<p>这时是新生成一个 <code>user</code> 实例，数据和上面的<code>user</code>一样。</p>
 <p>其中，<code>update()</code> 和<code>create()</code>的实现在<code>ModelSerializer</code>类中，实现比较复杂，就不展开来说了。</p>
 <p><code>create()</code>方法剩下的两行代码，一个是生成一些头信息，一个是把数据和请求结果返回到前端，不是这个方法的核心，所以就不说了。</p>
 <p><code>create()</code>方法的简单剖析就到此为止了。 </p>
