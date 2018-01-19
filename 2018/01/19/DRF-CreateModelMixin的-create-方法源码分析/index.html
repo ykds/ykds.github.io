@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next gemini" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Django," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="今天在写代码时有一个地方需要重写 create() 方法，但是重写后发现总是报错，一气之下就打开源码好好研究下 create() 方法的实现原理。至于我到底把 create() 这个方法重写成怎么个惨状就忽略吧，重点是要把 create() 切开来，看看它到底长个啥样。 先看看 create() 有哪些代码，逐行的去剖析。 123456def create(self, request, *args">
+<meta name="keywords" content="Django">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DRF: CreateModelMixin的 create() 方法源码分析">
+<meta property="og:url" content="http://yoursite.com/2018/01/19/DRF-CreateModelMixin的-create-方法源码分析/index.html">
+<meta property="og:site_name" content="Sixpence">
+<meta property="og:description" content="今天在写代码时有一个地方需要重写 create() 方法，但是重写后发现总是报错，一气之下就打开源码好好研究下 create() 方法的实现原理。至于我到底把 create() 这个方法重写成怎么个惨状就忽略吧，重点是要把 create() 切开来，看看它到底长个啥样。 先看看 create() 有哪些代码，逐行的去剖析。 123456def create(self, request, *args">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-19T02:51:03.929Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DRF: CreateModelMixin的 create() 方法源码分析">
+<meta name="twitter:description" content="今天在写代码时有一个地方需要重写 create() 方法，但是重写后发现总是报错，一气之下就打开源码好好研究下 create() 方法的实现原理。至于我到底把 create() 这个方法重写成怎么个惨状就忽略吧，重点是要把 create() 切开来，看看它到底长个啥样。 先看看 create() 有哪些代码，逐行的去剖析。 123456def create(self, request, *args">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/19/DRF-CreateModelMixin的-create-方法源码分析/"/>
+
+
+
+
+
+  <title>DRF: CreateModelMixin的 create() 方法源码分析 | Sixpence</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Sixpence</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/19/DRF-CreateModelMixin的-create-方法源码分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sixpence">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/moon.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sixpence">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">DRF: CreateModelMixin的 create() 方法源码分析</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-19T10:37:35+08:00">
+                2018-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Django/" itemprop="url" rel="index">
+                    <span itemprop="name">Django</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o">浏览</i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,554 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>今天在写代码时有一个地方需要重写 create() 方法，但是重写后发现总是报错，一气之下就打开源码好好研究下 create() 方法的实现原理。至于我到底把 create() 这个方法重写成怎么个惨状就忽略吧，重点是要把 create() 切开来，看看它到底长个啥样。</p>
+<p>先看看 create() 有哪些代码，逐行的去剖析。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">def create(self, request, *args, **kwargs):</div><div class="line">    serializer = self.get_serializer(data=request.data)</div><div class="line">    serializer.is_valid(raise_exception=True)</div><div class="line">    self.perform_create(serializer)</div><div class="line">    headers = self.get_success_headers(serializer.data)</div><div class="line">    return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)</div></pre></td></tr></table></figure>
+<p>第一行调用了<code>self.get_serializer(data=request.data)</code>这个方法，我们进一步剖析，看看这个方法它到底做了什么事。</p>
+<h2 id="self-get-serializer-data-request-data"><a href="#self-get-serializer-data-request-data" class="headerlink" title="self.get_serializer(data=request.data)"></a>self.get_serializer(data=request.data)</h2><p>这个方法的实现在<code>GenericApiView</code>类中，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">def get_serializer(self, *args, **kwargs):</div><div class="line">    serializer_class = self.get_serializer_class()</div><div class="line">    kwargs[&apos;context&apos;] = self.get_serializer_context()</div><div class="line">    return serializer_class(*args, **kwargs)</div><div class="line">def get_serializer_class(self):</div><div class="line">    assert self.serializer_class is not None, (</div><div class="line">        &quot;&apos;%s&apos; should either include a `serializer_class` attribute, &quot;</div><div class="line">        &quot;or override the `get_serializer_class()` method.&quot;</div><div class="line">        % self.__class__.__name__</div><div class="line">    )</div><div class="line">    return self.serializer_class</div><div class="line">def get_serializer_context(self):</div><div class="line">    return &#123;</div><div class="line">        &apos;request&apos;: self.request,</div><div class="line">        &apos;format&apos;: self.format_kwarg,</div><div class="line">        &apos;view&apos;: self</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>我们看到, <code>get_serializer(self, *args, **kwargs)</code>只是调用了下面的两个方法，<code>get_serializer_class(self)</code>和<code>get_serializer_context(self)</code>，那我们再来看看这两个方法：</p>
+<p><code>get_serializer_class(self)</code>: </p>
+<p>方法很简单，就是返回我们在<code>ViewSet</code>类中设置的<code>serializer_class</code>的值，比如你设置了<code>serializer_class = UserSerializer</code>，那么这个方法就是返回<code>UserSerializer</code>。</p>
+<p><code>get_serializer_context(self):</code></p>
+<p>这个方法也很简单，这个方法的作用就是提供一些<strong>额外的上下文</strong>到序列化对象中，暂时不需要去理解这些额外信息的作用，但这是不可或缺的。</p>
+<p>好了，现在可以回头再看看<code>get_serializer(self, *args, **kwargs)</code> （还好刚才两个方法不用再往下挖，不然今晚就没得睡了( ╯▽╰) ），现在看回来也清楚这个方法做了什么了，通俗来讲就是<strong>先拿一个序列化类（UserSerializer)，再拿一点额外的信息加到 kwargs 这个字典中，最后就把拿回的序列化类和字典（包含有 data 和 context )生成一个序列化对象返回回去。</strong></p>
+<h2 id="serializer-is-valid-raise-exception-True"><a href="#serializer-is-valid-raise-exception-True" class="headerlink" title="serializer.is_valid(raise_exception=True)"></a>serializer.is_valid(raise_exception=True)</h2><p><code>get_serializer(self, *args, **kwargs)</code>搞懂了，接下来就来看看<code>serializer</code>对象中的<code>is_valid(raise_exception=True)</code>方法，这里传了一个<code>raise_exception = True</code>，在下面会解释有什么用，先记住它。在上一个方法我们得到了一个序列化对象，但是从用户传过来的数据合不合法呢？ 是不是有效的数据呢？就由这个方法来判断。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">def is_valid(self, raise_exception=False):</div><div class="line">    assert not hasattr(self, &apos;restore_object&apos;), (</div><div class="line">        &apos;Serializer `%s.%s` has old-style version 2 `.restore_object()` &apos;</div><div class="line">        &apos;that is no longer compatible with REST framework 3. &apos;</div><div class="line">        &apos;Use the new-style `.create()` and `.update()` methods instead.&apos; %</div><div class="line">        (self.__class__.__module__, self.__class__.__name__)</div><div class="line">    )</div><div class="line">    assert hasattr(self, &apos;initial_data&apos;), (</div><div class="line">        &apos;Cannot call `.is_valid()` as no `data=` keyword argument was &apos;</div><div class="line">        &apos;passed when instantiating the serializer instance.&apos;</div><div class="line">    )</div><div class="line">    if not hasattr(self, &apos;_validated_data&apos;):</div><div class="line">        try:</div><div class="line">            self._validated_data = self.run_validation(self.initial_data)</div><div class="line">        except ValidationError as exc:</div><div class="line">            self._validated_data = &#123;&#125;</div><div class="line">            self._errors = exc.detail</div><div class="line">        else:</div><div class="line">            self._errors = &#123;&#125;</div><div class="line">    if self._errors and raise_exception:</div><div class="line">        raise ValidationError(self.errors)</div><div class="line">    return not bool(self._errors)</div></pre></td></tr></table></figure>
+<p>不要怕，虽然这里代码比较多，但是认真看看，我们需要理解的只是那两个<code>if</code>的部分。</p>
+<p>第一个<code>if</code>，首先看看有没有<code>_validated_data</code>这个属性，这个属性只有在我们验证过数据才会有，即调用过<code>is_valid()</code>后才会存在的属性。</p>
+<p>所以这里还没有，就要执行里面的代码，第一行语句调用的<code>run_validation(self.initial_data)</code>就是验证数据的方法，其中<code>initial_data</code>其实就是<code>serializer = self.get_serializer(data=request.data)</code>中传入的<code>data</code>，可以在<code>BaseSerializer</code>的<code>__init__</code>方法中了解，这里就不展示代码了。</p>
+<p>至于这个<code>run_validation()</code>还挖不挖呢？ emmmm，还是不挖了，因为要挖下去的话就要挖很多层，加上我也还不太理解其中的实现。我们知道它就是验证<code>initial_data</code>，然后返回验证完的数据到<code>_validated_data</code>中，当然，如果有数据不合法或者是无效数据，<code>run_validation()</code>方法就会抛出<code>ValidationError</code>错误，并把错误信息加到<code>self._errors</code>中。</p>
+<p>第二个<code>if</code>，就是判断这个验证过程有没有错误，这个<code>raise_exception</code>是不是有点眼熟？ 对，就是调用<code>is_valid()</code>时传进行的参数，如果设置为<code>False</code>的话，那么即使验证过程有数据不合法了或无效也不会抛出异常，意思就是<strong>无视错误，继续执行下去</strong>。</p>
+<p>验证完了，就要返回结果了，当验证无误时<code>self._errors</code>是空字典，<code>bool(self._errors) = False</code>，有误则不空，<code>bool(self._errors) = True</code>，所以返回时要<strong>取反</strong>。</p>
+<h2 id="self-perform-create-serializer"><a href="#self-perform-create-serializer" class="headerlink" title="self.perform_create(serializer)"></a>self.perform_create(serializer)</h2><p>数据验证完啦，没有问题啦，接下来当然就是要把数据存到数据库，这个方法其实只是调用了<code>serializer</code>的<code>save()</code>方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def perform_create(self, serializer):</div><div class="line">    serializer.save()</div></pre></td></tr></table></figure>
+<p>所以我们就来浅浅的看一下<code>save()</code>方法，因为底层实现比较复杂，这里我们主要是简单了解 <code>create()</code>的实现，如果这样挖下去就无穷无尽了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">def save(self, **kwargs):</div><div class="line">    validated_data = dict(</div><div class="line">        list(self.validated_data.items()) +</div><div class="line">        list(kwargs.items())</div><div class="line">    )</div><div class="line">    if self.instance is not None:</div><div class="line">        self.instance = self.update(self.instance, validated_data)</div><div class="line">        assert self.instance is not None, (</div><div class="line">            &apos;`update()` did not return an object instance.&apos;</div><div class="line">        )</div><div class="line">    else:</div><div class="line">        self.instance = self.create(validated_data)</div><div class="line">        assert self.instance is not None, (</div><div class="line">            &apos;`create()` did not return an object instance.&apos;</div><div class="line">        )</div><div class="line">    return self.instance</div></pre></td></tr></table></figure>
+<p>为了看得方便，把<code>assert</code>的部分都删了，那些不是重点，只要看看那些英文解释就能知道它们的作用。</p>
+<p><code>validated_data</code>包含我们验证过的数据和额外通过调用<code>save()</code>时传进来的数据，重点是下面<code>if</code>的代码块，当新建<code>serializer</code>对象时如果把实例也传进来的话，<code>self.instance</code>就不是<code>None</code>，就会进行更新实例的数据的操作，反之，就会新建一个实例。比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">user = User()</div><div class="line">data = &#123;&apos;name&apos;: &apos;tom&apos;, &apos;age&apos;: 12&#125;</div><div class="line">serializer = UserSerializer(user, data=data)</div><div class="line">serializer.save()</div></pre></td></tr></table></figure>
+<p>user 实例数据就更新为<code>name = tom ，age = 12</code>。而</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">data = &#123;&apos;name&apos;: &apos;tom&apos;, &apos;age&apos;: 12&#125;</div><div class="line">serializer = UserSerializer(data=data)</div><div class="line">user = serializer.save()</div></pre></td></tr></table></figure>
+<p>就会生成一个和上面一样的<code>user</code>实例。</p>
+<p>其中，<code>update()</code> 和<code>create()</code>的实现在<code>ModelSerializer</code>类中，实现比较复杂，就不展开来说了。</p>
+<p><code>create()</code>方法剩下的两行代码，一个是生成一些头信息，一个是把数据和请求结果返回到前端，不是这个方法的核心，所以就不说了。</p>
+<p><code>create()</code>方法的简单剖析就到此为止了。 </p>
+<p>如果有错误的地方，欢迎指出。</p>
+
+      
+    </div>
+    
+    
+    
+
+    <div>    
+	 
+	 
+	    <ul class="post-copyright">
+	      <li class="post-copyright-author">
+	          <strong>本文作者：</strong>Sixpence
+	      </li>
+	      <li class="post-copyright-link">
+	        <strong>本文链接：</strong>
+	        <a href="/2018/01/19/DRF-CreateModelMixin的-create-方法源码分析/" title="DRF: CreateModelMixin的 create() 方法源码分析">2018/01/19/DRF-CreateModelMixin的-create-方法源码分析/</a>
+	      </li>
+	      <li class="post-copyright-license">
+	        <strong>版权声明： </strong>
+	        本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！
+	      </li>
+	    </ul>
+	  
+</div>
+
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持是我坚持写作的动力</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wecheat_reward2.png" alt="Sixpence 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay_reward2.png" alt="Sixpence 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+    <div>
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+    </div>
+    
+       
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Django/" rel="tag"><i class="fa fa-tag"></i> Django</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/15/Django-REST-framework实现发送验证码邮件/" rel="next" title="Django REST framework实现发送验证码邮件">
+                <i class="fa fa-chevron-left"></i> Django REST framework实现发送验证码邮件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="uyan_frame"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/moon.jpg"
+                alt="Sixpence" />
+            
+              <p class="site-author-name" itemprop="name">Sixpence</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/ykds" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#self-get-serializer-data-request-data"><span class="nav-number">1.</span> <span class="nav-text">self.get_serializer(data=request.data)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#serializer-is-valid-raise-exception-True"><span class="nav-number">2.</span> <span class="nav-text">serializer.is_valid(raise_exception=True)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#self-perform-create-serializer"><span class="nav-number">3.</span> <span class="nav-text">self.perform_create(serializer)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sixpence</span>
+
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站总访问量<span id="busuanzi_value_site_uv"></span>次
+</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+-->
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user">访问人数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2147578"></script>
+      <!-- UY END -->
+    
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
