@@ -77,13 +77,13 @@
 
 
 
-<meta name="description" content="###安装 Redis 在配置缓存前要先安装好 Redis ，Windows 版本下载地址： https://github.com/MicrosoftArchive/redis/releases ( 官方没有对应的 Windows 版本，如果是在Linux环境，去官网下载即可），在这里我选择的是 .msi，这个可以通过界面安装，只要点几下就可以安装完成，就不放安装过程图了。 安装成功后，确定启动了">
+<meta name="description" content="###安装 Redis在配置缓存前要先安装好 Redis ，Windows 版本下载地址： https://github.com/MicrosoftArchive/redis/releases ( 官方没有对应的 Windows 版本，如果是在Linux环境，去官网下载即可），在这里我选择的是 .msi，这个可以通过界面安装，只要点几下就可以安装完成，就不放安装过程图了。 安装成功后，确定启动了">
 <meta name="keywords" content="Django">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DRF 配置 Redis 缓存">
 <meta property="og:url" content="http://yoursite.com/2018/03/03/DRF 配置 Redis 缓存/index.html">
 <meta property="og:site_name" content="Sixpence">
-<meta property="og:description" content="###安装 Redis 在配置缓存前要先安装好 Redis ，Windows 版本下载地址： https://github.com/MicrosoftArchive/redis/releases ( 官方没有对应的 Windows 版本，如果是在Linux环境，去官网下载即可），在这里我选择的是 .msi，这个可以通过界面安装，只要点几下就可以安装完成，就不放安装过程图了。 安装成功后，确定启动了">
+<meta property="og:description" content="###安装 Redis在配置缓存前要先安装好 Redis ，Windows 版本下载地址： https://github.com/MicrosoftArchive/redis/releases ( 官方没有对应的 Windows 版本，如果是在Linux环境，去官网下载即可），在这里我选择的是 .msi，这个可以通过界面安装，只要点几下就可以安装完成，就不放安装过程图了。 安装成功后，确定启动了">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3624123-92a041cb3a46feb8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3624123-40fc5d04d83481ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -91,10 +91,10 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3624123-5c446e31a4e3c165.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3624123-527e8309dd7323cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3624123-6288409054641522.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-03-03T04:14:24.698Z">
+<meta property="og:updated_time" content="2018-03-03T04:17:25.795Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DRF 配置 Redis 缓存">
-<meta name="twitter:description" content="###安装 Redis 在配置缓存前要先安装好 Redis ，Windows 版本下载地址： https://github.com/MicrosoftArchive/redis/releases ( 官方没有对应的 Windows 版本，如果是在Linux环境，去官网下载即可），在这里我选择的是 .msi，这个可以通过界面安装，只要点几下就可以安装完成，就不放安装过程图了。 安装成功后，确定启动了">
+<meta name="twitter:description" content="###安装 Redis在配置缓存前要先安装好 Redis ，Windows 版本下载地址： https://github.com/MicrosoftArchive/redis/releases ( 官方没有对应的 Windows 版本，如果是在Linux环境，去官网下载即可），在这里我选择的是 .msi，这个可以通过界面安装，只要点几下就可以安装完成，就不放安装过程图了。 安装成功后，确定启动了">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3624123-92a041cb3a46feb8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -377,11 +377,9 @@
       
 
       
-        <p>###安装 Redis</p>
-<p>在配置缓存前要先安装好 Redis ，Windows 版本下载地址： <a href="https://github.com/MicrosoftArchive/redis/releases" target="_blank" rel="external">https://github.com/MicrosoftArchive/redis/releases</a> ( 官方没有对应的 Windows 版本，如果是在Linux环境，去官网下载即可），在这里我选择的是 <strong>.msi</strong>，这个可以通过界面安装，只要点几下就可以安装完成，就不放安装过程图了。</p>
+        <p>###安装 Redis<br>在配置缓存前要先安装好 Redis ，Windows 版本下载地址： <a href="https://github.com/MicrosoftArchive/redis/releases" target="_blank" rel="external">https://github.com/MicrosoftArchive/redis/releases</a> ( 官方没有对应的 Windows 版本，如果是在Linux环境，去官网下载即可），在这里我选择的是 <strong>.msi</strong>，这个可以通过界面安装，只要点几下就可以安装完成，就不放安装过程图了。</p>
 <p>安装成功后，确定启动了 Redis 服务，在 cmd 命令行中输入 <strong>redis-cli</strong> 就能进入到 Redis 命令行。（前提要把 Redis 的安装目录配置到环境变量，在安装过程有添加环境变量的选项，勾上即可）</p>
-<p>###安装 drf-extensions</p>
-<p>可以在 Github 中搜索到，地址：<a href="https://github.com/chibisov/drf-extensions" target="_blank" rel="external">https://github.com/chibisov/drf-extensions</a>，<strong>drf-extensions</strong> 是 DRF 框架的自定义扩展的集合，其中就包含有缓存的扩展。</p>
+<p>###安装 drf-extensions<br>可以在 Github 中搜索到，地址：<a href="https://github.com/chibisov/drf-extensions" target="_blank" rel="external">https://github.com/chibisov/drf-extensions</a>，<strong>drf-extensions</strong> 是 DRF 框架的自定义扩展的集合，其中就包含有缓存的扩展。</p>
 <p>通过 pip 安装后，像下面的代码一样把 <strong>CacheResponseMixin</strong> 添加到 ViewSet 即可， 注意是添加到<strong>第一位</strong> （如果使用的不是 ViewSet ，可以到文档中看看具体配置）：</p>
 <pre><code>from myapps.serializers import UserSerializer
 from rest_framework_extensions.cache.mixins import CacheResponseMixin
@@ -394,8 +392,7 @@ class UserViewSet(CacheResponseMixin, viewsets.ModelViewSet):
 }
 </code></pre><p>基于上面的两次访问，10s后再来访问一次看看<br><img src="http://upload-images.jianshu.io/upload_images/3624123-c0fad864bbb0e0dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="第三次访问"><br>响应时间就变慢了，自己可以多测试几次看看结果。</p>
 <p>但是！这里的缓存是存放在 Django 的服务器上，如果重启了服务器那么所有缓存就消失了，这可不行阿，所以要把缓存存放在别的地方，就是 Redis 上。</p>
-<p>###安装 django-redis</p>
-<p>地址：<a href="https://github.com/niwinz/django-redis" target="_blank" rel="external">https://github.com/niwinz/django-redis</a>，这个库可以把缓存存放到 Redis 中，详细说明可以看文档，有中文文档。</p>
+<p>###安装 django-redis<br>地址：<a href="https://github.com/niwinz/django-redis" target="_blank" rel="external">https://github.com/niwinz/django-redis</a>，这个库可以把缓存存放到 Redis 中，详细说明可以看文档，有中文文档。</p>
 <p>安装好后只要一步就能配置成功，非常方便快捷，在 <strong>settings.py</strong> 中添加如下：</p>
 <pre><code>CACHES = {
     &quot;default&quot;: {
