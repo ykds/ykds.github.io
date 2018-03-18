@@ -80,15 +80,15 @@
 <meta name="description" content="今天把 Java 项目的开发环境从 Windows 转到 Ubuntu 中来，突然发现把一些中文数据写入数据库后变成 ???? （通过 MySql 命令行直接执行 SQL 命令没有问题），在 Windows 中时还好好的，真是百思不得其解。 然后一顿 Google ，又是修改代码，又是通过命令修改数据库的编码，最后还是不行。 最终才发现需要在 MySql 的配置文件中设置编码，修改如下：  在/e">
 <meta name="keywords" content="Mysql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="解决写入中文数据到 MySql 时变成 ????">
+<meta property="og:title" content="解决写入中文数据到 MySql 时变成 「????」">
 <meta property="og:url" content="http://yoursite.com/2018/03/18/解决写入中文数据到 MySql 时变成 「">
 <meta property="og:site_name" content="Sixpence">
 <meta property="og:description" content="今天把 Java 项目的开发环境从 Windows 转到 Ubuntu 中来，突然发现把一些中文数据写入数据库后变成 ???? （通过 MySql 命令行直接执行 SQL 命令没有问题），在 Windows 中时还好好的，真是百思不得其解。 然后一顿 Google ，又是修改代码，又是通过命令修改数据库的编码，最后还是不行。 最终才发现需要在 MySql 的配置文件中设置编码，修改如下：  在/e">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3624123-225d454cff1c24d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-03-18T14:44:53.202Z">
+<meta property="og:updated_time" content="2018-03-18T15:02:58.740Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="解决写入中文数据到 MySql 时变成 ????">
+<meta name="twitter:title" content="解决写入中文数据到 MySql 时变成 「????」">
 <meta name="twitter:description" content="今天把 Java 项目的开发环境从 Windows 转到 Ubuntu 中来，突然发现把一些中文数据写入数据库后变成 ???? （通过 MySql 命令行直接执行 SQL 命令没有问题），在 Windows 中时还好好的，真是百思不得其解。 然后一顿 Google ，又是修改代码，又是通过命令修改数据库的编码，最后还是不行。 最终才发现需要在 MySql 的配置文件中设置编码，修改如下：  在/e">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/3624123-225d454cff1c24d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>解决写入中文数据到 MySql 时变成 ???? | Sixpence</title>
+  <title>解决写入中文数据到 MySql 时变成 「????」 | Sixpence</title>
   
 
 
@@ -262,7 +262,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">解决写入中文数据到 MySql 时变成 ????</h2>
+          <h2 class="post-title" itemprop="name headline">解决写入中文数据到 MySql 时变成 「????」</h2>
         
 
         <div class="post-meta">
@@ -405,7 +405,7 @@
 	      </li>
 	      <li class="post-copyright-link">
 	        <strong>本文链接：</strong>
-	        <a href="/2018/03/18/解决写入中文数据到 MySql 时变成 「????」/" title="解决写入中文数据到 MySql 时变成 ????">2018/03/18/解决写入中文数据到 MySql 时变成 「????」/</a>
+	        <a href="/2018/03/18/解决写入中文数据到 MySql 时变成 「????」/" title="解决写入中文数据到 MySql 时变成 「????」">2018/03/18/解决写入中文数据到 MySql 时变成 「????」/</a>
 	      </li>
 	      <li class="post-copyright-license">
 	        <strong>版权声明： </strong>
