@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="Mysql," />
+  <meta name="keywords" content=",,,,," />
 
 
 
@@ -79,9 +79,9 @@
 
 <meta name="description" content="今天把 Java 项目的开发环境从 Windows 转到 Ubuntu 中来，突然发现把一些中文数据写入数据库后变成 ???? （通过 MySql 命令行直接执行 SQL 命令没有问题），在 Windows 中时还好好的，真是百思不得其解。 然后一顿 Google ，又是修改代码，又是通过命令修改数据库的编码，最后还是不行。 最终才发现需要在 MySql 的配置文件中设置编码，修改如下：  在/e">
 <meta name="keywords" content="Mysql">
-<meta property="og:type" content="article">
+<meta property="og:type" content="website">
 <meta property="og:title" content="解决写入中文数据到 MySql 时变成 「????」">
-<meta property="og:url" content="http://yoursite.com/2018/03/18/解决写入中文数据到 MySql 时变成 「">
+<meta property="og:url" content="http://yoursite.com/解决写入中文数据到 MySql 时变成 「">
 <meta property="og:site_name" content="Sixpence">
 <meta property="og:description" content="今天把 Java 项目的开发环境从 Windows 转到 Ubuntu 中来，突然发现把一些中文数据写入数据库后变成 ???? （通过 MySql 命令行直接执行 SQL 命令没有问题），在 Windows 中时还好好的，真是百思不得其解。 然后一顿 Google ，又是修改代码，又是通过命令修改数据库的编码，最后还是不行。 最终才发现需要在 MySql 的配置文件中设置编码，修改如下：  在/e">
 <meta property="og:locale" content="zh-Hans">
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/18/解决写入中文数据到 MySql 时变成 「"/>
+  <link rel="canonical" href="http://yoursite.com/解决写入中文数据到 MySql 时变成 「"/>
 
 
 
@@ -233,113 +233,24 @@
 
   <div id="posts" class="posts-expand">
     
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/18/解决写入中文数据到 MySql 时变成 「????」/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sixpence">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/moon.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Sixpence">
-    </span>
-
     
+    
+    <div class="post-block page">
       <header class="post-header">
 
-        
-        
-          <h2 class="post-title" itemprop="name headline">解决写入中文数据到 MySql 时变成 「????」</h2>
-        
+	<h2 class="post-title" itemprop="name headline">解决写入中文数据到 MySql 时变成 「????」</h2>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-18T22:40:40+08:00">
-                2018-03-18
-              </time>
-            
 
-            
 
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Mysql/" itemprop="url" rel="index">
-                    <span itemprop="name">Mysql</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-file-o">浏览</i>
-            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
-            </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+</header>
 
       
       
-
       
-        <p>今天把 Java 项目的开发环境从 Windows 转到 Ubuntu 中来，突然发现把一些中文数据写入数据库后变成 ???? （通过 MySql 命令行直接执行 SQL 命令没有问题），在 Windows 中时还好好的，真是百思不得其解。 然后一顿 Google ，又是修改代码，又是通过命令修改数据库的编码，最后还是不行。 最终才发现需要在 MySql 的配置文件中设置编码，修改如下：</p>
+      <div class="post-body">
+        
+        
+          <p>今天把 Java 项目的开发环境从 Windows 转到 Ubuntu 中来，突然发现把一些中文数据写入数据库后变成 ???? （通过 MySql 命令行直接执行 SQL 命令没有问题），在 Windows 中时还好好的，真是百思不得其解。 然后一顿 Google ，又是修改代码，又是通过命令修改数据库的编码，最后还是不行。 最终才发现需要在 MySql 的配置文件中设置编码，修改如下：</p>
 <ul>
 <li>在<code>/etc/mysql/mysql.conf.d/</code>目录下找到<code>mysqld.cnf</code>，以 root 方式编辑，在<code>[mysqld]</code>下方添加一条<code>character-set-server=utf8</code> ，保存。</li>
 </ul>
@@ -357,123 +268,15 @@
 </li>
 </ol>
 
+        
+      </div>
+      
+      
       
     </div>
     
     
     
-
-    <div>    
-	 
-	 
-	    <ul class="post-copyright">
-	      <li class="post-copyright-author">
-	          <strong>本文作者：</strong>Sixpence
-	      </li>
-	      <li class="post-copyright-link">
-	        <strong>本文链接：</strong>
-	        <a href="/2018/03/18/解决写入中文数据到 MySql 时变成 「????」/" title="解决写入中文数据到 MySql 时变成 「????」">2018/03/18/解决写入中文数据到 MySql 时变成 「????」/</a>
-	      </li>
-	      <li class="post-copyright-license">
-	        <strong>版权声明： </strong>
-	        本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！
-	      </li>
-	    </ul>
-	  
-</div>
-
-    
-
-    
-
-    
-      <div>
-        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-  <div>您的支持是我坚持写作的动力</div>
-  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-    <span>打赏</span>
-  </button>
-  <div id="QR" style="display: none;">
-
-    
-      <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/wecheat_reward2.png" alt="Sixpence 微信支付"/>
-        <p>微信支付</p>
-      </div>
-    
-
-    
-      <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/alipay_reward2.png" alt="Sixpence 支付宝"/>
-        <p>支付宝</p>
-      </div>
-    
-
-    
-
-  </div>
-</div>
-
-      </div>
-    
-
-    
-
-    
-    <div>
-        <div>
-    
-        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
-    
-</div>
-    </div>
-    
-       
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Mysql/" rel="tag"><i class="fa fa-tag"></i> Mysql</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/03/08/使用 VMware 创建 Linux 服务器/" rel="next" title="使用 VMware 创建 Linux 服务器">
-                <i class="fa fa-chevron-left"></i> 使用 VMware 创建 Linux 服务器
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
   </div>
 
 
@@ -531,7 +334,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -542,7 +345,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -553,7 +356,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
