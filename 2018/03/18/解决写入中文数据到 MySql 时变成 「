@@ -81,7 +81,7 @@
 <meta name="keywords" content="Mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="解决写入中文数据到 MySql 时变成 ????">
-<meta property="og:url" content="http://yoursite.com/2018/03/18/解决写入中文数据到 MySql 时变成 ">
+<meta property="og:url" content="http://yoursite.com/2018/03/18/解决写入中文数据到 MySql 时变成 「">
 <meta property="og:site_name" content="Sixpence">
 <meta property="og:description" content="今天把 Java 项目的开发环境从 Windows 转到 Ubuntu 中来，突然发现把一些中文数据写入数据库后变成 ???? （通过 MySql 命令行直接执行 SQL 命令没有问题），在 Windows 中时还好好的，真是百思不得其解。 然后一顿 Google ，又是修改代码，又是通过命令修改数据库的编码，最后还是不行。 最终才发现需要在 MySql 的配置文件中设置编码，修改如下：  在/e">
 <meta property="og:locale" content="zh-Hans">
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/18/解决写入中文数据到 MySql 时变成 "/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/18/解决写入中文数据到 MySql 时变成 「"/>
 
 
 
@@ -245,7 +245,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/18/解决写入中文数据到 MySql 时变成 ????/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/18/解决写入中文数据到 MySql 时变成 「????」/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sixpence">
@@ -405,7 +405,7 @@
 	      </li>
 	      <li class="post-copyright-link">
 	        <strong>本文链接：</strong>
-	        <a href="/2018/03/18/解决写入中文数据到 MySql 时变成 ????/" title="解决写入中文数据到 MySql 时变成 ????">2018/03/18/解决写入中文数据到 MySql 时变成 ????/</a>
+	        <a href="/2018/03/18/解决写入中文数据到 MySql 时变成 「????」/" title="解决写入中文数据到 MySql 时变成 ????">2018/03/18/解决写入中文数据到 MySql 时变成 「????」/</a>
 	      </li>
 	      <li class="post-copyright-license">
 	        <strong>版权声明： </strong>
